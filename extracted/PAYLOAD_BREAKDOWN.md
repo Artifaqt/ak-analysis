@@ -12,9 +12,11 @@
 - **Empty Files:** 2 files
 
 ### Downloaded Commands (Separate Analysis):
-- **Total Downloaded:** 25 command scripts
-- **Successfully Processed:** 3 scripts (12%) - See readable/ folder
-- **VM-Protected:** 22 scripts (88%) - See vm_obfuscated/ folder
+- **Total Downloaded:** 58 command scripts
+- **Readable Scripts:** 36 scripts (62%) - See readable/ folder
+  - 33 scripts already readable (no VM protection)
+  - 3 scripts manually processed (animhub, sfly, jerk)
+- **VM-Protected:** 22 scripts (38%) - See vm_obfuscated/ folder
 - **Full Details:** [DEOBFUSCATION_STATUS.md](../analysis/DEOBFUSCATION_STATUS.md)
 
 ---

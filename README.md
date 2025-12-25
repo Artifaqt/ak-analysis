@@ -4,12 +4,13 @@ Full analysis and deobfuscation of the "AK Admin 75 Command Script" for Roblox.
 
 ## 📊 Project Status
 
-### Deobfuscation Results:
-- **Total Scripts:** 25 command scripts
-- **Successfully Processed:** 3 scripts (12%) ✅
-- **VM-Protected Remaining:** 22 scripts (88%) ❌
-- **Dynamic Deobfuscation Success:** 0% (Luraph VM too strong)
-- **Manual Processing Success:** 12% (3/25 readable)
+### Downloaded Command Scripts:
+- **Total Scripts:** 58 command scripts
+- **Readable Scripts:** 36 scripts (62%) ✅
+- **VM-Protected:** 22 scripts (38%) ❌
+- **Manually Processed:** 3 scripts (animhub, sfly, jerk - required beautification/merging)
+- **Already Readable:** 33 scripts (downloaded without VM protection)
+- **Dynamic Deobfuscation Success:** 0% (Luraph VM too strong for protected scripts)
 
 ### Key Discovery:
 **Scripts crash when run standalone but work through AK Admin** due to environment dependency - they require AK Admin infrastructure to execute.
@@ -33,16 +34,25 @@ ak/
 │   ├── CAPTURE_ACTUAL_PAYLOAD.md     # HTTP capture instructions
 │   └── READY_TO_CAPTURE.md           # Payload capture guide
 │
-├── downloaded_commands/               # Downloaded !command scripts
-│   ├── readable/                      # 3 successfully processed scripts ✅
+├── downloaded_commands/               # Downloaded !command scripts (58 total)
+│   ├── readable/                      # 36 readable scripts ✅ (62%)
 │   │   ├── animhub.lua               # ✅ 269KB, beautified + renamed + syntax fixed
 │   │   ├── sfly.lua                  # ✅ 32KB, merged mobile + desktop versions
-│   │   └── jerk.lua                  # ⚠️ Loader documented (remotes MoonSec V3 protected)
-│   └── vm_obfuscated/                # 22 remaining VM-protected scripts ❌
-│       ├── ugcemotes.lua
-│       ├── caranims.lua
-│       ├── reanim.lua
-│       └── ... 19 more files
+│   │   ├── jerk.lua                  # ⚠️ Loader documented (remotes MoonSec V3 protected)
+│   │   ├── iy.lua                    # ✅ 486KB, Infinite Yield admin
+│   │   ├── emotes.lua, fling.lua, hug.lua, invis.lua
+│   │   ├── antiall.lua, antibang.lua, antifling.lua, antiheadsit.lua
+│   │   ├── antikidnap.lua, antislide.lua, antivoid.lua
+│   │   ├── chatlogs.lua, domainexpansion.lua, facebang.lua
+│   │   ├── friendcheck.lua, pianoplayer.lua, shiftlock.lua
+│   │   ├── touchfling.lua, uafling.lua, walkonair.lua
+│   │   └── ... and 15 more readable scripts
+│   └── vm_obfuscated/                # 22 VM-protected scripts ❌ (38%)
+│       ├── ugcemotes.lua, caranims.lua, reanim.lua
+│       ├── antiafk.lua, antivcban.lua, call.lua
+│       ├── chateditor.lua, kidnap.lua, stalk.lua
+│       ├── speed.lua, flip.lua, trip.lua
+│       └── ... and 10 more VM-protected scripts
 │
 ├── extracted/                         # Key extracted/readable scripts
 │   ├── main_command_script.lua       # 40 remote control commands (921 lines)
@@ -98,9 +108,10 @@ ak/
    - Tracks username, commands, timestamps
 
 4. **VM Protection (Luraph)**
-   - 22/25 command scripts use custom bytecode obfuscation
-   - Dynamic deobfuscation completely failed (0/25 success)
-   - No standard loadstring() calls - custom VM interpreter
+   - 22/58 command scripts use custom bytecode obfuscation (38%)
+   - 36/58 scripts were already readable (62%)
+   - Dynamic deobfuscation failed for all VM-protected scripts
+   - No standard loadstring() calls in VM scripts - custom VM interpreter
 
 5. **Environment Dependency** 🔴 CRITICAL DISCOVERY
    - Scripts crash when run standalone
@@ -145,7 +156,10 @@ See: **[analysis/COMMAND_ANALYSIS.md](analysis/COMMAND_ANALYSIS.md)**
 
 ---
 
-## ✅ Successfully Processed Scripts (3)
+## ✅ Readable Scripts Summary (36 total)
+
+### Manually Processed Scripts (3)
+These required special processing (beautification, merging, variable renaming):
 
 ### 1. animhub.lua ✅ FULLY PROCESSED
 - **Original:** 144KB minified on 1 line
@@ -176,6 +190,58 @@ See: **[analysis/COMMAND_ANALYSIS.md](analysis/COMMAND_ANALYSIS.md)**
 - **Description:** Animation jerk loader for R6/R15 rigs
 - **Location:** [downloaded_commands/readable/jerk.lua](downloaded_commands/readable/jerk.lua)
 
+### Already Readable Scripts (33)
+These were downloaded without VM protection and require no processing:
+
+**Anti-Protection Scripts (7):**
+- antiall.lua (7.8KB) - All anti-protections combined
+- antibang.lua (5.9KB) - Anti-bang protection
+- antifling.lua (1.4KB) - Anti-fling protection
+- antiheadsit.lua (5.8KB) - Anti-headsit protection
+- antikidnap.lua (13KB) - Anti-kidnap protection
+- antislide.lua (2.7KB) - Anti-slide/glide
+- antivoid.lua (1.1KB) - Anti-void protection
+
+**Interaction Scripts (4):**
+- facebang.lua (28KB) - Inappropriate animation
+- fling.lua (21KB) - Fling players
+- hug.lua (13KB) - Hug animation
+- touchfling.lua (17KB) - Touch-based fling
+
+**Utility Scripts (11):**
+- ad.lua (3.9KB) - Advertisement system
+- akbypasser.lua (12KB) - Chat bypasser
+- animlogger.lua (12KB) - Animation logger
+- chatlogs.lua (9.6KB) - Chat logging
+- friendcheck.lua (31KB) - Friend checker
+- fpsboost.lua (1.3KB) - FPS booster
+- naturaldisastergodmode.lua (1.6KB) - Natural Disaster godmode
+- pianoplayer.lua (18KB) - Piano player
+- shiftlock.lua (3.7KB) - Shiftlock enabler
+- shmost.lua (21KB) - Unknown utility
+- walkonair.lua (7.4KB) - Walk on air
+
+**Movement Scripts (3):**
+- fastre.lua (6.6KB) - Fast reset
+- uafling.lua (13KB) - Universal fling
+- voidre.lua (3.5KB) - Void reset
+
+**Visual/World Scripts (3):**
+- domainexpansion.lua (14KB) - Domain expansion effect
+- emotes.lua (21KB) - Emote hub
+- skymaster.lua (4.4KB) - Sky effects
+
+**Character Scripts (3):**
+- invis.lua (16KB) - Invisibility
+- r6.lua (3.6KB) - Force R6 avatar
+- r15.lua (3.6KB) - Force R15 avatar
+
+**Other Scripts (2):**
+- iy.lua (486KB) - Infinite Yield admin script
+- re.lua (427 bytes) - Reset character
+
+**Location:** All 36 scripts in [downloaded_commands/readable/](downloaded_commands/readable/)
+
 ---
 
 ## ❌ VM-Protected Scripts (22)
@@ -188,15 +254,29 @@ These scripts remain in [downloaded_commands/vm_obfuscated/](downloaded_commands
 3. **Anti-tamper detection** - Detects debugging attempts
 4. **Environment validation** - Crashes when AK infrastructure is missing
 
-**Scripts:**
-- ugcemotes.lua, caranims.lua, reanim.lua
-- antiafk.lua, antivcban.lua, call.lua
-- limborbit.lua, speed.lua, chateditor.lua
-- kidnap.lua, stalk.lua, flip.lua
-- coloredbaseplate.lua, gokutp.lua, animcopy.lua
-- ftp.lua, swordreach.lua, reverse.lua
-- touchfling.lua, r6.lua, r15.lua
-- And 1 more file
+**Complete List (22 scripts):**
+1. animcopy.lua - Animation copier
+2. antiafk.lua - Anti-AFK
+3. antivcban.lua - Anti voice chat ban
+4. call.lua - Phone call UI
+5. caranims.lua - Car animations
+6. chateditor.lua - Chat editor
+7. coloredbaseplate.lua - Colored baseplate
+8. flip.lua - Flip character
+9. ftp.lua - Fast teleport
+10. gokutp.lua - Goku-style teleport
+11. infbaseplate.lua - Infinite baseplate
+12. kidnap.lua - Kidnap feature
+13. limborbit.lua - Limbo orbit
+14. reanim.lua - Reanimation/size changer
+15. reverse.lua - Reverse controls
+16. shaders.lua - Graphics shaders
+17. speed.lua - Speed hack
+18. spotify.lua - Spotify UI
+19. stalk.lua - Player stalker
+20. swordreach.lua - Sword reach
+21. trip.lua - Trip animation
+22. ugcemotes.lua - UGC emotes
 
 ---
 
@@ -316,7 +396,8 @@ Every command execution is logged with:
 2. Complete surveillance
 3. Could get your account banned
 4. No way to disable it
-5. 88% of commands are black boxes (VM-protected)
+5. 38% of commands are still VM-protected black boxes
+6. Even "readable" scripts are unverified and potentially harmful
 
 ### Safer Alternatives:
 
@@ -378,9 +459,10 @@ Full list in: **[analysis/COMPLETE_ANALYSIS.md](analysis/COMPLETE_ANALYSIS.md)**
 | Surveillance | 🔴 CRITICAL | All activity logged to Discord |
 | Malicious Abuse | 🔴 HIGH | Easy to grief/harass users |
 | Account Safety | 🟡 MEDIUM | Could trigger bans |
-| External Scripts | 🟡 MEDIUM | 76+ unverified downloads |
+| External Scripts | 🟡 MEDIUM | 58 unverified downloads |
 | Deception | 🔴 HIGH | Misleading marketing |
-| VM Obfuscation | 🔴 HIGH | 88% of commands are black boxes |
+| VM Obfuscation | 🟡 MEDIUM | 38% of commands are black boxes (22/58) |
+| Unverified Code | 🟡 MEDIUM | Even readable scripts could be harmful |
 
 **Overall Verdict:** 🔴 **UNSAFE - DO NOT USE**
 
@@ -425,9 +507,10 @@ The AK admin commands use sophisticated multi-layer protection:
 
 - **Total Payloads Captured:** 24
 - **Total Commands Found:** 116+
-- **Command Scripts Downloaded:** 25
-- **Successfully Deobfuscated:** 3 (12%)
-- **VM-Protected Remaining:** 22 (88%)
+- **Command Scripts Downloaded:** 58
+- **Readable Scripts:** 36 (62%)
+- **VM-Protected:** 22 (38%)
+- **Manually Processed:** 3 (animhub, sfly, jerk)
 - **Whitelisted Users:** 5
 - **Discord Webhook:** 1 (active surveillance)
 - **External Download Sources:** 2 domains
@@ -440,11 +523,12 @@ The AK admin commands use sophisticated multi-layer protection:
 
 ### Technical Insights:
 
-1. **VM Virtualization**
-   - Uses Luraph-style bytecode obfuscation
+1. **VM Virtualization (38% of scripts)**
+   - 22/58 scripts use Luraph-style bytecode obfuscation
    - Custom execution engine that doesn't call loadstring()
-   - Traditional deobfuscation impossible (0/25 success)
+   - Traditional deobfuscation impossible (0/22 success for VM scripts)
    - Can only be analyzed through runtime memory dumping or VM reverse engineering
+   - Good news: 62% of scripts (36/58) were already readable!
 
 2. **Environment Dependency** 🔴 CRITICAL DISCOVERY
    - Scripts require AK Admin infrastructure to run
@@ -469,11 +553,13 @@ The AK admin commands use sophisticated multi-layer protection:
 
 ### Processing Lessons:
 
-1. **Manual Processing Works for Simple Cases**
-   - Successfully beautified minified code (animhub.lua)
+1. **Most Scripts Were Already Readable**
+   - 36/58 scripts (62%) downloaded without VM protection
+   - Only 3 scripts required manual processing (beautification/merging)
+   - 33 scripts were immediately usable for analysis
+   - Manual processing successfully beautified minified code (animhub.lua)
    - Fetched and merged remote scripts (sfly.lua)
    - Variable renaming improves readability
-   - Only works for non-VM scripts (3/25 = 12%)
 
 2. **Dynamic Deobfuscation Failed Completely**
    - Loadstring hooks don't work (0/25 success)
@@ -506,11 +592,11 @@ The AK admin commands use sophisticated multi-layer protection:
 ## 📁 File Count Summary
 
 ```
-Total Files: 80+
+Total Files: 113+
 
 ├── Analysis Documents: 7 (in analysis/)
 ├── Payload Scripts: 24 (in payloads/)
-├── Downloaded Commands: 25 (3 readable, 22 VM-protected)
+├── Downloaded Commands: 58 (36 readable, 22 VM-protected)
 ├── Extracted Scripts: 2 (in extracted/)
 ├── Tools: 7 (in tools/)
 ├── Logs: 3+ (in LOGS/)
@@ -566,10 +652,10 @@ Read the analysis documents in order:
 ---
 
 **Analysis Date:** December 25, 2025
-**Status:** ✅ Complete (3/25 scripts readable, 22/25 remain VM-protected)
+**Status:** ✅ Complete (36/58 scripts readable, 22/58 VM-protected)
 **Security Verdict:** 🔴 UNSAFE - DO NOT USE
 
-**Final Verdict:** Accept current state - 12% success rate for manual processing, VM protection too strong for remaining 88%
+**Final Verdict:** 62% of scripts are readable (36/58), 38% remain VM-protected (22/58). Most scripts were already readable when downloaded - only 3 required manual processing.
 
 ---
 
