@@ -1,0 +1,209 @@
+================================================================================
+HOW TO DEOBFUSCATE THE SCRIPT - COMPLETE GUIDE
+================================================================================
+
+WHAT YOU NEED:
+- A Roblox executor (Synapse, KRNL, Fluxus, etc.)
+- The files in this folder
+- A throwaway Roblox account (for safety)
+
+================================================================================
+STEP-BY-STEP INSTRUCTIONS (EASIEST METHOD - USE THIS!)
+================================================================================
+
+STEP 1: Copy both files to your executor's workspace folder
+----------------------------------------
+1. Find your executor's workspace folder:
+   - Synapse X: %localappdata%\Synapse\workspace
+   - KRNL: Documents\KRNL\workspace
+   - Fluxus: Documents\Fluxus\workspace
+   - Script-Ware: Documents\ScriptWare\workspace
+
+2. Copy BOTH files to that folder:
+   ✓ run_deobfuscation.lua
+   ✓ ak_deobfuscated.lua
+
+
+STEP 2: Run the all-in-one script
+----------------------------------------
+In your executor, paste and execute this ONE line:
+
+loadfile("run_deobfuscation.lua")()
+
+OR copy the contents of run_deobfuscation.lua and paste into executor.
+
+
+STEP 3: Wait for it to complete
+----------------------------------------
+The script will:
+1. Set up all monitoring hooks automatically
+2. Load and execute the obfuscated script
+3. Capture all behavior
+4. Save results to files
+
+Files are auto-saved every 5 seconds to your executor's workspace folder.
+
+
+STEP 4: Check the output files
+----------------------------------------
+Look in your executor's workspace folder for these files:
+
+✓✓✓ MOST IMPORTANT ✓✓✓
+  deobfuscated_code.lua  <- THE ACTUAL READABLE CODE (if loadstring was used)
+
+Other useful files:
+  summary.txt            <- Overview of what was found
+  captured_strings.txt   <- All strings the script constructed
+  api_calls.txt          <- All game API calls it made
+  service_calls.txt      <- All services it accessed
+  deobfuscation_log.txt  <- Complete detailed log
+
+
+================================================================================
+WHAT TO EXPECT
+================================================================================
+
+BEST CASE (80% chance):
+  The script uses loadstring to execute deobfuscated code.
+  You'll get a file called "deobfuscated_code.lua" with the ACTUAL READABLE CODE!
+
+  This is the jackpot - you can now see exactly what the script does.
+
+GOOD CASE (19% chance):
+  The script doesn't use loadstring, but you still get:
+  - All strings it constructed (often reveals functionality)
+  - All API calls it made (shows what it accessed)
+  - Behavioral patterns (tells you what it does)
+
+  This is still very useful for understanding the script's purpose.
+
+WORST CASE (1% chance):
+  The script has anti-debugging and detects the hooks.
+  It might error or not run properly.
+
+  Solution: Try a different executor or contact me for advanced techniques.
+
+
+================================================================================
+FINDING YOUR EXECUTOR'S WORKSPACE FOLDER
+================================================================================
+
+METHOD 1: Check executor settings
+  Most executors show the workspace path in their settings/options menu.
+
+METHOD 2: Use this code in your executor
+  Execute this to find the workspace folder:
+
+    print("Workspace folder:")
+    if getworkspacefolder then
+        print(getworkspacefolder())
+    elseif workspace then
+        print("Check your executor's documentation")
+    end
+
+    -- Or check if writefile works
+    writefile("test.txt", "Hello!")
+    print("File created! Check for test.txt in your workspace folder")
+
+METHOD 3: Common paths
+  - Synapse: %localappdata%\Synapse\workspace
+  - KRNL: %userprofile%\Documents\KRNL\workspace
+  - Fluxus: %userprofile%\Documents\Fluxus\workspace
+  - Script-Ware: %userprofile%\Documents\ScriptWare\workspace
+
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: "writefile not available" error
+  Your executor doesn't support file operations.
+  - Try a different executor (Synapse, KRNL recommended)
+  - Output will still show in console (but you can't copy it)
+
+PROBLEM: Script errors immediately
+  - Make sure you loaded deobfuscate_dynamic.lua FIRST
+  - Make sure you're in a Roblox game (not the menu)
+  - Try a simpler script to test if executor works
+
+PROBLEM: No files are created
+  - Check your executor's workspace folder location
+  - Make sure writefile permission is enabled in executor
+  - Check executor console for errors
+
+PROBLEM: Files are empty or incomplete
+  - Wait longer - script might still be running
+  - Files are auto-saved every 5 seconds
+  - Type: _G.DeobfuscationFramework.printSummary() to force save
+
+PROBLEM: No "deobfuscated_code.lua" file
+  - Script doesn't use loadstring (this is normal for some scripts)
+  - Check the other files (captured_strings.txt, api_calls.txt)
+  - These still show what the script does
+
+
+================================================================================
+SAFETY REMINDERS
+================================================================================
+
+✓ Use a throwaway/alt Roblox account
+✓ Don't enter real credentials or personal info
+✓ Run in a game you don't care about
+✓ Be ready to close executor if suspicious behavior occurs
+✓ Check api_calls.txt for unexpected service access
+✓ Check captured_strings.txt for URLs or webhooks
+
+
+================================================================================
+AFTER DEOBFUSCATION
+================================================================================
+
+Once you have the deobfuscated code:
+
+1. READ IT CAREFULLY
+   - Look for what it actually does
+   - Check for malicious patterns
+   - Verify it matches what you expected
+
+2. LOOK FOR RED FLAGS
+   - HTTP requests to unknown URLs
+   - Accessing HttpService
+   - Reading/sending player data
+   - Accessing ServerStorage or ServerScriptService
+   - Any Discord webhooks
+
+3. MAKE YOUR DECISION
+   - Safe to use? Great!
+   - Suspicious? Don't use it
+   - Unclear? Ask for help analyzing it
+
+
+================================================================================
+QUICK REFERENCE
+================================================================================
+
+Load monitoring:
+  loadfile("deobfuscate_dynamic.lua")()
+
+Load obfuscated script:
+  loadfile("ak_deobfuscated.lua")()
+
+Force save now:
+  _G.DeobfuscationFramework.printSummary()
+
+Check results:
+  Go to executor workspace folder and open:
+  - deobfuscated_code.lua (the actual code!)
+  - summary.txt (overview)
+
+
+================================================================================
+NEED MORE HELP?
+================================================================================
+
+See also:
+- QUICK_START_DEOBFUSCATION.md (detailed guide)
+- DEOBFUSCATION_GUIDE.md (technical deep dive)
+- SECURITY_ANALYSIS_REPORT.md (security assessment)
+
+Good luck! 🚀

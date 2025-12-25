@@ -1,0 +1,89 @@
+✅ AK FOLDER - ORGANIZED & CLEANED
+
+📁 ak/
+├── 📄 ak.lua (67K) - Original loader script
+├── 📄 README.md (12K) - Main documentation
+│
+├── 📁 analysis/ (4 files) - All analysis documents
+│   ├── COMPLETE_ANALYSIS.md ⭐ START HERE - Full analysis
+│   ├── COMMAND_ANALYSIS.md - Remote control commands
+│   ├── CAPTURE_ACTUAL_PAYLOAD.md - How we captured it
+│   └── READY_TO_CAPTURE.md - Capture guide
+│
+├── 📁 payloads/ (24 files) - All captured scripts
+│   ├── actual_payload_1.lua through actual_payload_24.lua
+│   ├── ⚠️ actual_payload_8.lua - Main remote control script
+│   ├── 📋 actual_payload_17.lua - 76+ command registry
+│   ├── actual_payload_20.lua - User tags (166K)
+│   └── ... (20 other payloads)
+│
+├── 📁 extracted/ (1 file) - Key readable scripts
+│   └── main_command_script.lua - 40 remote control commands (readable copy)
+│
+├── 📁 tools/ (3 files) - Capture tools that worked
+│   ├── capture_and_run.lua ⭐ - All-in-one capture script (THE METHOD THAT WORKED)
+│   ├── capture_http_payload.lua - Standalone HTTP monitor
+│   └── analyze_reanimation_patterns.py - Pattern analyzer
+│
+└── 📁 LOGS/ (5 files) - Analysis logs
+    ├── api_calls.txt - 15 API calls captured
+    ├── captured_strings.txt - String captures
+    ├── deobfuscation_log.txt - Execution log
+    ├── summary.txt - Capture summary
+    └── HOW_TO_USE.txt - Usage guide
+
+═══════════════════════════════════════════════════════════════
+
+REMOVED (Outdated/Irrelevant):
+❌ deobfuscate.py - Didn't work on VM code
+❌ deobfuscate_dynamic.lua - Replaced by capture method
+❌ run_deobfuscation.lua - Replaced by capture method
+❌ run_layer2_deobfuscation.lua - Replaced by capture method
+❌ advanced_analysis.py - Didn't work on VM code
+❌ vm_bytecode_analyzer.py - Didn't help
+❌ ak_deobfuscated.lua - Not needed (same as ak.lua)
+❌ deobfuscated_code.lua - Old Layer 1 attempt
+❌ deobfuscated_code_layer2.lua - Self-replicating VM
+❌ DEOBFUSCATION_GUIDE.md - Old method docs
+❌ DEOBFUSCATION_RESULTS.md - Old results
+❌ REANIMATION_BEHAVIOR_ANALYSIS.md - Incomplete analysis
+❌ SECURITY_ANALYSIS_REPORT.md - Superseded by COMPLETE_ANALYSIS
+
+═══════════════════════════════════════════════════════════════
+
+KEPT (What Actually Worked):
+✅ capture_and_run.lua - The capture method that worked
+✅ All 24 payload files - The actual captured scripts
+✅ COMPLETE_ANALYSIS.md - Full analysis of everything
+✅ COMMAND_ANALYSIS.md - Detailed command breakdown
+✅ main_command_script.lua - Readable main script
+
+═══════════════════════════════════════════════════════════════
+
+TOTAL FILES:
+- Root: 2 files (ak.lua, README.md)
+- Analysis: 4 documents
+- Payloads: 24 scripts
+- Extracted: 1 readable script
+- Tools: 3 working tools
+- Logs: 5 log files
+━━━━━━━━━━━━━━━━━━━━━━
+TOTAL: 39 files
+
+═══════════════════════════════════════════════════════════════
+
+WHERE TO START:
+1. Read: README.md (overview)
+2. Read: analysis/COMPLETE_ANALYSIS.md (full details)
+3. Review: payloads/actual_payload_8.lua (remote control script)
+4. Review: payloads/actual_payload_17.lua (command registry)
+
+═══════════════════════════════════════════════════════════════
+
+KEY FINDINGS SUMMARY:
+🔴 116+ commands total (not 75)
+🔴 Remote control by 5 whitelisted users
+🔴 Complete surveillance via Discord webhook
+🔴 DO NOT USE - Unsafe script
+
+═══════════════════════════════════════════════════════════════

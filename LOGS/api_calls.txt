@@ -1,0 +1,18 @@
+API CALLS (15 total)
+================================================================================
+
+game.Anchored
+game.AssemblyLinearVelocity
+game.AvatarGestures
+game.Character
+game.ComputerMovementMode
+game.CurrentCamera
+game.GetService
+game.KeyCode
+game.KeyframeReached
+game.LocalPlayer
+game.Name
+game.Parent
+game.PrimaryPart
+game.UserId
+game.UserInputType

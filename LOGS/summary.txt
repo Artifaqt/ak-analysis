@@ -1,0 +1,8 @@
+DEOBFUSCATION SUMMARY
+================================================================================
+
+Strings captured: 0
+API calls: 15
+Loadstring calls: 1
+
+SUCCESS! Actual code captured in deobfuscated_code.lua

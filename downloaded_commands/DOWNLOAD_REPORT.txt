@@ -1,0 +1,248 @@
+AK ADMIN COMMAND DOWNLOAD REPORT
+======================================================================
+
+Total Commands: 58/58
+  Readable:      33
+  VM Obfuscated: 25
+  Failed:        0
+
+======================================================================
+READABLE COMMANDS
+======================================================================
+
+!domainexpansion         13,644 bytes
+  URL: https://akadmin-bzk.pages.dev/domainexpansion.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\domainexpansion.lua
+
+!skymaster                4,298 bytes
+  URL: https://akadmin-bzk.pages.dev/skymaster.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\skymaster.lua
+
+!pianoplayer             17,797 bytes
+  URL: https://akadmin-bzk.pages.dev/Pianoplayer.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\pianoplayer.lua
+
+!r6                       3,494 bytes
+  URL: https://akadmin-bzk.pages.dev/R6.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\r6.lua
+
+!r15                      3,495 bytes
+  URL: https://akadmin-bzk.pages.dev/R15.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\r15.lua
+
+!antikidnap              12,211 bytes
+  URL: https://akadmin-bzk.pages.dev/antikidnap.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\antikidnap.lua
+
+!ad                       3,754 bytes
+  URL: https://akadmin-bzk.pages.dev/Ad.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\ad.lua
+
+!akbypasser              11,787 bytes
+  URL: https://akadmin-bzk.pages.dev/AKbypasser.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\akbypasser.lua
+
+!animlogger              11,380 bytes
+  URL: https://akadmin-bzk.pages.dev/Animlogger.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\animlogger.lua
+
+!antiall                  7,678 bytes
+  URL: https://akadmin-bzk.pages.dev/Antiall.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\antiall.lua
+
+!friendcheck             30,474 bytes
+  URL: https://akadmin-bzk.pages.dev/Friendchecker.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\friendcheck.lua
+
+!antibang                 5,804 bytes
+  URL: https://akadmin-bzk.pages.dev/antibang.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\antibang.lua
+
+!antiheadsit              5,727 bytes
+  URL: https://akadmin-bzk.pages.dev/Anti%20Headsit.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\antiheadsit.lua
+
+!antifling                1,348 bytes
+  URL: https://akadmin-bzk.pages.dev/Antifling.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\antifling.lua
+
+!antivoid                 1,064 bytes
+  URL: https://akadmin-bzk.pages.dev/Antivoid.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\antivoid.lua
+
+!chatlogs                 9,370 bytes
+  URL: https://akadmin-bzk.pages.dev/Chatlogs.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\chatlogs.lua
+
+!emotes                  20,685 bytes
+  URL: https://akadmin-bzk.pages.dev/Emotes.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\emotes.lua
+
+!facebang                27,558 bytes
+  URL: https://akadmin-bzk.pages.dev/facefuck.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\facebang.lua
+
+!fling                   20,703 bytes
+  URL: https://akadmin-bzk.pages.dev/fling.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\fling.lua
+
+!fpsboost                 1,249 bytes
+  URL: https://raw.githubusercontent.com/insanedude59/MiscReleases/main/Roblox/UWPFPSBooster.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\fpsboost.lua
+
+!hug                     12,168 bytes
+  URL: https://akadmin-bzk.pages.dev/Hug.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\hug.lua
+
+!invis                   15,544 bytes
+  URL: https://akadmin-bzk.pages.dev/Invis.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\invis.lua
+
+!iy                     483,985 bytes
+  URL: https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\iy.lua
+
+!naturaldisastergodmode      1,533 bytes
+  URL: https://akadmin-bzk.pages.dev/Ndsgodmode.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\naturaldisastergodmode.lua
+
+!re                         415 bytes
+  URL: https://akadmin-bzk.pages.dev/oof.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\re.lua
+
+!shiftlock                3,623 bytes
+  URL: https://akadmin-bzk.pages.dev/Shiftlock.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\shiftlock.lua
+
+!shmost                  20,448 bytes
+  URL: https://akadmin-bzk.pages.dev/shmost.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\shmost.lua
+
+!antislide                2,605 bytes
+  URL: https://akadmin-bzk.pages.dev/stopglide.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\antislide.lua
+
+!touchfling              16,355 bytes
+  URL: https://akadmin-bzk.pages.dev/touchfling.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\touchfling.lua
+
+!uafling                 12,712 bytes
+  URL: https://akadmin-bzk.pages.dev/uafling.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\uafling.lua
+
+!voidre                   3,449 bytes
+  URL: https://akadmin-bzk.pages.dev/voidoof.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\voidre.lua
+
+!walkonair                7,186 bytes
+  URL: https://akadmin-bzk.pages.dev/Walkonair.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\walkonair.lua
+
+!fastre                   6,476 bytes
+  URL: https://akadmin-bzk.pages.dev/instantRE.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\readable\fastre.lua
+
+======================================================================
+VM-OBFUSCATED COMMANDS
+======================================================================
+
+!ugcemotes              225,699 bytes
+  URL: https://akadmin-bzk.pages.dev/Ugcemotes.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\ugcemotes.lua
+
+!caranims               185,815 bytes
+  URL: https://akadmin-bzk.pages.dev/caranimations.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\caranims.lua
+
+!antiafk                 79,227 bytes
+  URL: https://akadmin-bzk.pages.dev/antiafk.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\antiafk.lua
+
+!antivcban               81,915 bytes
+  URL: https://akadmin-bzk.pages.dev/antivcban.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\antivcban.lua
+
+!limborbit               86,921 bytes
+  URL: https://akadmin-bzk.pages.dev/limborbit.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\limborbit.lua
+
+!speed                   78,675 bytes
+  URL: https://akadmin-bzk.pages.dev/speed.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\speed.lua
+
+!chateditor              78,695 bytes
+  URL: https://akadmin-bzk.pages.dev/chateditor.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\chateditor.lua
+
+!kidnap                  91,930 bytes
+  URL: https://akadmin-bzk.pages.dev/kidnap.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\kidnap.lua
+
+!call                    65,698 bytes
+  URL: https://akadmin-bzk.pages.dev/call.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\call.lua
+
+!spotify                129,051 bytes
+  URL: https://akadmin-bzk.pages.dev/spotify.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\spotify.lua
+
+!stalk                   89,155 bytes
+  URL: https://akadmin-bzk.pages.dev/Stalk.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\stalk.lua
+
+!flip                    80,291 bytes
+  URL: https://akadmin-bzk.pages.dev/flip.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\flip.lua
+
+!coloredbaseplate        81,212 bytes
+  URL: https://akadmin-bzk.pages.dev/coloredbaseplate.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\coloredbaseplate.lua
+
+!infbaseplate            68,151 bytes
+  URL: https://akadmin-bzk.pages.dev/Baseplate.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\infbaseplate.lua
+
+!gokutp                  72,050 bytes
+  URL: https://akadmin-bzk.pages.dev/Gokutp.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\gokutp.lua
+
+!shaders                 71,211 bytes
+  URL: https://akadmin-bzk.pages.dev/Shaders.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\shaders.lua
+
+!animcopy                96,412 bytes
+  URL: https://akadmin-bzk.pages.dev/Animcopy.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\animcopy.lua
+
+!ftp                     68,481 bytes
+  URL: https://akadmin-bzk.pages.dev/ftp.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\ftp.lua
+
+!reanim                 177,287 bytes
+  URL: https://akadmin-bzk.pages.dev/sizechanger.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\reanim.lua
+
+!trip                    69,343 bytes
+  URL: https://akadmin-bzk.pages.dev/trip.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\trip.lua
+
+!animhub                144,420 bytes
+  URL: https://raw.githubusercontent.com/Eazvy/public-scripts/main/Universal_Animations_Emotes.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\animhub.lua
+
+!swordreach              94,755 bytes
+  URL: https://akadmin-bzk.pages.dev/swordreach.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\swordreach.lua
+
+!reverse                 84,622 bytes
+  URL: https://akadmin-bzk.pages.dev/Reversee.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\reverse.lua
+
+!jerk                       397 bytes
+  URL: https://akadmin-bzk.pages.dev/Jerk.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\jerk.lua
+
+!sfly                       270 bytes
+  URL: https://akadmin-bzk.pages.dev/Sfly.lua
+  File: c:\Users\Artifaqt\Downloads\ak\downloaded_commands\vm_obfuscated\sfly.lua
+

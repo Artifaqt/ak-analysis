@@ -1,0 +1,49 @@
+[0.00s] [SYSTEM] ✓ loadstring hook enabled
+[0.00s] [SYSTEM] ✓ game hook enabled (hookmetamethod)
+[0.00s] [GAME] game.GetService
+[0.00s] [SYSTEM] 
+[0.00s] [SYSTEM] Framework initialized!
+[0.00s] [SYSTEM] Files will be saved to workspace folder
+[0.00s] [SYSTEM] 
+[0.00s] [SYSTEM] Looking for obfuscated script: ak_deobfuscated.lua
+[0.00s] [SYSTEM] 
+[0.00s] [SYSTEM] Reading file...
+[0.00s] [SYSTEM] File loaded successfully (123478 bytes)
+[0.00s] [SYSTEM] Executing script... (this may take a moment)
+[0.00s] [SYSTEM] 
+[0.00s] [CRITICAL] ==========================================
+[0.00s] [CRITICAL] LOADSTRING CALLED - ACTUAL CODE FOUND!!!
+[0.00s] [CRITICAL] ==========================================
+[0.00s] [CRITICAL] SAVED TO: deobfuscated_code.lua
+[0.00s] [ERROR] 
+[0.00s] [ERROR] ==================== ERROR ====================
+[0.00s] [ERROR] :270: Failed to parse script content!
+[0.00s] [ERROR] ===============================================
+[0.00s] [ERROR] 
+[0.00s] [ERROR] TROUBLESHOOTING:
+[0.00s] [ERROR] 1. Make sure ak_deobfuscated.lua is in your executor's workspace folder
+[0.00s] [ERROR] 2. Check if the filename is correct (case-sensitive)
+[0.00s] [ERROR] 3. Verify your executor supports readfile()
+[0.00s] [ERROR] 
+[0.00s] [GAME] game.AssemblyLinearVelocity
+[0.00s] [GAME] game.CurrentCamera
+[0.01s] [GAME] game.ComputerMovementMode
+[0.01s] [GAME] game.PrimaryPart
+[0.02s] [GAME] game.LocalPlayer
+[0.03s] [GAME] game.Character
+[0.05s] [GAME] game.Parent
+[0.07s] [GAME] game.Anchored
+[0.25s] [GAME] game.AvatarGestures
+[0.44s] [GAME] game.Name
+[0.56s] [GAME] game.UserInputType
+[0.56s] [GAME] game.KeyCode
+[1.02s] [SYSTEM] Saving results...
+[1.02s] [SYSTEM] 
+[1.02s] [SYSTEM] DONE! Check your workspace folder for results.
+[1.02s] [SYSTEM] 
+[1.55s] [GAME] game.UserId
+[5.03s] [SYSTEM] Saving results...
+[10.04s] [SYSTEM] Saving results...
+[10.28s] [GAME] game.KeyframeReached
+[15.06s] [SYSTEM] Saving results...
+[20.07s] [SYSTEM] Saving results...
