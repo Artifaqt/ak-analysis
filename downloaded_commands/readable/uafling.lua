@@ -1,4 +1,4 @@
--- Enhanced Gui with Modern UI
+-- Enhanced screenGui with Modern UI
 -- Version: 4.0
 
 -- Services
@@ -10,14 +10,14 @@ local Workspace = game:GetService("Workspace")
 local LocalPlayer = Players.LocalPlayer
 
 -- Instances
-local Gui = Instance.new("ScreenGui")
+local screenGui = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local TopBar = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
 local MinimizeButton = Instance.new("TextButton")
 local CloseButton = Instance.new("TextButton")
 local ContentFrame = Instance.new("Frame")
-local Box = Instance.new("TextBox")
+local textBox = Instance.new("TextBox")
 local UITextSizeConstraint = Instance.new("UITextSizeConstraint")
 local Button = Instance.new("TextButton")
 local UITextSizeConstraint_2 = Instance.new("UITextSizeConstraint")
@@ -25,14 +25,14 @@ local ViewButton = Instance.new("TextButton")
 local UITextSizeConstraint_3 = Instance.new("UITextSizeConstraint")
 
 -- Properties
-Gui.Name = "UnanchoredFlingGUI"
-Gui.Parent = gethui()
-Gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Gui.ResetOnSpawn = false
+screenGui.Name = "UnanchoredFlingGUI"
+screenGui.Parent = gethui()
+screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+screenGui.ResetOnSpawn = false
 
 -- Main Frame
 Main.Name = "Main"
-Main.Parent = Gui
+Main.Parent = screenGui
 Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Main.BackgroundTransparency = 0.6
 Main.BorderSizePixel = 0
@@ -106,27 +106,27 @@ ContentFrame.BackgroundTransparency = 1
 ContentFrame.Position = UDim2.new(0, 0, 0, 35)
 ContentFrame.Size = UDim2.new(1, 0, 1, -35)
 
--- Text Box
-Box.Name = "Box"
-Box.Parent = ContentFrame
-Box.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Box.BackgroundTransparency = 0.5
-Box.BorderSizePixel = 0
-Box.Position = UDim2.new(0.1, 0, 0.08, 0)
-Box.Size = UDim2.new(0.8, 0, 0, 30)
-Box.Font = Enum.Font.Gotham
-Box.PlaceholderText = "Enter player name..."
-Box.Text = ""
-Box.TextColor3 = Color3.fromRGB(255, 255, 255)
-Box.TextSize = 12
-Box.ClearTextOnFocus = false
+-- Text textBox
+textBox.Name = "textBox"
+textBox.Parent = ContentFrame
+textBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+textBox.BackgroundTransparency = 0.5
+textBox.BorderSizePixel = 0
+textBox.Position = UDim2.new(0.1, 0, 0.08, 0)
+textBox.Size = UDim2.new(0.8, 0, 0, 30)
+textBox.Font = Enum.Font.Gotham
+textBox.PlaceholderText = "Enter player name..."
+textBox.Text = ""
+textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+textBox.TextSize = 12
+textBox.ClearTextOnFocus = false
 
-UITextSizeConstraint.Parent = Box
+UITextSizeConstraint.Parent = textBox
 UITextSizeConstraint.MaxTextSize = 12
 
 local BoxCorner = Instance.new("UICorner")
 BoxCorner.CornerRadius = UDim.new(0, 8)
-BoxCorner.Parent = Box
+BoxCorner.Parent = textBox
 
 -- Fling Button
 Button.Name = "Button"
@@ -308,11 +308,11 @@ local function getPlayer(name)
 end
 
 local function onButtonClicked()
-	local playerName = Box.Text
+	local playerName = textBox.Text
 	if playerName ~= "" then
 		local targetPlayer = getPlayer(playerName)
 		if targetPlayer then
-			Box.Text = targetPlayer.Name
+			textBox.Text = targetPlayer.Name
 			local function applyBallFling(targetCharacter)
 				humanoidRootPart = targetCharacter:WaitForChild("HumanoidRootPart")
 				toggleBlackHole()
@@ -322,14 +322,14 @@ local function onButtonClicked()
 			if targetCharacter then
 				applyBallFling(targetCharacter)
 			else
-				Box.Text = "Player not found"
+				textBox.Text = "Player not found"
 			end
 
 			targetPlayer.CharacterAdded:Connect(function(newCharacter)
 				applyBallFling(newCharacter)
 			end)
 		else
-			Box.Text = "Player not found"
+			textBox.Text = "Player not found"
 		end
 	end
 end
@@ -340,7 +340,7 @@ local camera = Workspace.CurrentCamera
 
 ViewButton.MouseButton1Click:Connect(function()
 	viewing = not viewing
-	local playerName = Box.Text
+	local playerName = textBox.Text
 	local targetPlayer = getPlayer(playerName)
 	if viewing then
 		if targetPlayer and targetPlayer.Character then
@@ -383,7 +383,7 @@ end)
 
 -- Close functionality
 CloseButton.MouseButton1Click:Connect(function()
-	Gui:Destroy()
+	screenGui:Destroy()
 end)
 
 -- Button click

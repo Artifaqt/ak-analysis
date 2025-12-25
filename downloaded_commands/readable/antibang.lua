@@ -11,9 +11,9 @@ local IsEnabled = true
 
 -- Create GUI elements for mobile
 local function CreateMobileButton()
-    local gui = Instance.new("ScreenGui")
-    gui.Name = "VoidProtectionGUI"
-    gui.ResetOnSpawn = false
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "VoidProtectionGUI"
+    screenGui.ResetOnSpawn = false
     
     local button = Instance.new("TextButton")
     button.Name = "ToggleButton"
@@ -37,8 +37,8 @@ local function CreateMobileButton()
     stroke.Thickness = 1
     stroke.Parent = button
     
-    button.Parent = gui
-    gui.Parent = Player:WaitForChild("PlayerGui")
+    button.Parent = screenGui
+    screenGui.Parent = Player:WaitForChild("PlayerGui")
     
     button.MouseButton1Click:Connect(function()
         IsEnabled = not IsEnabled
@@ -49,7 +49,7 @@ local function CreateMobileButton()
     return button
 end
 
--- Simplified head-sitting detection with radius check
+-- Simplified head - sitting detection with radius check
 local function IsPlayerSittingOnHead()
     if Head then
         for _, otherPlayer in ipairs(Players:GetPlayers()) do
@@ -107,11 +107,11 @@ local function VoidTeleport()
     workspace.Camera.CameraType = Enum.CameraType.Fixed
     
     local HRoot = game:GetService("Players").LocalPlayer.Character.Humanoid.RootPart
-    local Pos = HRoot.CFrame
+    local frame = HRoot.CFrame
     
-    HRoot.CFrame = Pos + Vector3.new(0, -1e3, 0)
+    HRoot.CFrame = frame + Vector3.new(0, -1e3, 0)
     task.wait(0.1)
-    HRoot.CFrame = Pos
+    HRoot.CFrame = frame
     
     workspace.Camera.CameraType = Enum.CameraType.Custom
 end

@@ -156,10 +156,10 @@ end)
 local function VoidTeleport()
     workspace.Camera.CameraType = Enum.CameraType.Fixed
     local HRoot = Player.Character.Humanoid.RootPart
-    local Pos = HRoot.CFrame
-    HRoot.CFrame = Pos + Vector3.new(0, -1e3, 0)
+    local frame = HRoot.CFrame
+    HRoot.CFrame = frame + Vector3.new(0, -1e3, 0)
     task.wait(0.5)
-    HRoot.CFrame = Pos
+    HRoot.CFrame = frame
     workspace.Camera.CameraType = Enum.CameraType.Custom
 end
 

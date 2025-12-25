@@ -29,18 +29,18 @@ local Config = {
 
 -- Create Screen GUI
 local function createScreenGui()
-    local gui = Instance.new("ScreenGui")
-    gui.ResetOnSpawn = false
-    gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    gui.Name = "FlingUI"
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.ResetOnSpawn = false
+    screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    screenGui.Name = "FlingUI"
     
     if RunService:IsStudio() then
-        gui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+        screenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
     else
-        gui.Parent = game:GetService("CoreGui")
+        screenGui.Parent = game:GetService("CoreGui")
     end
     
-    return gui
+    return screenGui
 end
 
 -- Make Frame Draggable (PC and Mobile)
@@ -282,10 +282,10 @@ local function flingPlayer(target)
     local char = LocalPlayer.Character
     if not char then return end
     
-    local hum = char:FindFirstChildOfClass("Humanoid")
-    if not hum then return end
+    local humanoid = char:FindFirstChildOfClass("Humanoid")
+    if not humanoid then return end
     
-    local root = hum.RootPart
+    local root = humanoid.RootPart
     if not root then return end
     
     local targetChar = target.Character
@@ -310,10 +310,10 @@ local function flingPlayer(target)
         
         workspace.FallenPartsDestroyHeight = 0/0
         
-        local bv = Instance.new("BodyVelocity")
-        bv.Velocity = Vector3.new(-9e99, 9e99, -9e99)
-        bv.MaxForce = Vector3.new(9e9, 9e9, 9e9)
-        bv.Parent = root
+        local bodyvelocity = Instance.new("BodyVelocity")
+        bodyvelocity.Velocity = Vector3.new(-9e99, 9e99, -9e99)
+        bodyvelocity.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+        bodyvelocity.Parent = root
         
         repeat
             if part and part.Parent and root and root.Parent then
@@ -332,9 +332,9 @@ local function flingPlayer(target)
               (#State.Targets == 0 and not State.FlingAll) or
               not targetChar.Parent or
               not char.Parent or
-              hum.Health <= 0
+              humanoid.Health <= 0
         
-        bv:Destroy()
+        bodyvelocity:Destroy()
         
         if State.SavedPosition and root then
             root.CFrame = State.SavedPosition
@@ -347,8 +347,8 @@ local function flingPlayer(target)
             end
         end
         
-        if hum then
-            hum:ChangeState(Enum.HumanoidStateType.GettingUp)
+        if humanoid then
+            humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
         end
     end
     
@@ -374,10 +374,10 @@ local function startFlingLoop()
                 if #State.Targets > 0 then
                     for _, target in ipairs(State.Targets) do
                         if target and target.Parent and target.Character then
-                            local hum = target.Character:FindFirstChildOfClass("Humanoid")
-                            local root = hum and hum.RootPart
+                            local humanoid = target.Character:FindFirstChildOfClass("Humanoid")
+                            local root = humanoid and humanoid.RootPart
                             
-                            if root and not hum.Sit and root.Velocity.Magnitude < 30 then
+                            if root and not humanoid.Sit and root.Velocity.Magnitude < 30 then
                                 flingPlayer(target)
                             end
                         end
@@ -385,10 +385,10 @@ local function startFlingLoop()
                 elseif State.FlingAll then
                     for _, player in ipairs(Players:GetPlayers()) do
                         if player ~= LocalPlayer and player.Character then
-                            local hum = player.Character:FindFirstChildOfClass("Humanoid")
-                            local root = hum and hum.RootPart
+                            local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+                            local root = humanoid and humanoid.RootPart
                             
-                            if root and not hum.Sit and root.Velocity.Magnitude < 30 then
+                            if root and not humanoid.Sit and root.Velocity.Magnitude < 30 then
                                 flingPlayer(player)
                             end
                         end
@@ -414,9 +414,9 @@ local function updateCamera()
             end
         else
             if LocalPlayer.Character then
-                local hum = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-                if hum then
-                    workspace.CurrentCamera.CameraSubject = hum
+                local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+                if humanoid then
+                    workspace.CurrentCamera.CameraSubject = humanoid
                 end
             end
         end
@@ -488,9 +488,9 @@ MainUI.SpectateButton.MouseButton1Click:Connect(function()
         MainUI.SpectateButton.BackgroundColor3 = Config.Colors.ButtonNormal
         
         if LocalPlayer.Character then
-            local hum = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-            if hum then
-                workspace.CurrentCamera.CameraSubject = hum
+            local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                workspace.CurrentCamera.CameraSubject = humanoid
             end
         end
     end

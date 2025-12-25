@@ -1,172 +1,172 @@
-local Ps = game:GetService("Players")
-local Rs = game:GetService("RunService")
-local Ui = game:GetService("UserInputService")
-local Pr = Ps.LocalPlayer
-local Aw = true
-local Iv = false
-local Mu = false
-local Md = false
+local players = game:GetService("Players")
+local runservice = game:GetService("RunService")
+local userinputservice = game:GetService("UserInputService")
+local localPlayer = players.LocalPlayer
+local flag = true
+local flag2 = false
+local flag3 = false
+local flag4 = false
 
 local function Cb()
-    local bp = Instance.new("Part")
-    bp.Name = "InvisibleBaseplate"
-    bp.Size = Vector3.new(math.huge, 1, math.huge)
-    bp.Position = Vector3.new(0, 0, 0)
-    bp.Transparency = 1
-    bp.Anchored = true
-    bp.CanCollide = true
-    bp.Material = Enum.Material.Neon
-    bp.Color = Color3.fromRGB(70, 200, 255)
-    bp.Parent = workspace
-    return bp
+    local part = Instance.new("Part")
+    part.Name = "InvisibleBaseplate"
+    part.Size = Vector3.new(math.huge, 1, math.huge)
+    part.Position = Vector3.new(0, 0, 0)
+    part.Transparency = 1
+    part.Anchored = true
+    part.CanCollide = true
+    part.Material = Enum.Material.Neon
+    part.Color = Color3.fromRGB(70, 200, 255)
+    part.Parent = workspace
+    return part
 end
 
-local bp = Cb()
+local part = Cb()
 
-local Sg = Instance.new("ScreenGui")
-local Mf = Instance.new("Frame")
-local Uc = Instance.new("UICorner")
-local Tb = Instance.new("Frame")
-local Tc = Instance.new("UICorner")
-local Tl = Instance.new("TextLabel")
-local Xb = Instance.new("TextButton")
-local Xc = Instance.new("UICorner")
-local Ob = Instance.new("TextButton")
-local Oc = Instance.new("UICorner")
-local Ub = Instance.new("TextButton")
-local Uc2 = Instance.new("UICorner")
-local Db = Instance.new("TextButton")
-local Dc = Instance.new("UICorner")
-local Vb = Instance.new("TextButton")
-local Vc = Instance.new("UICorner")
+local screenGui = Instance.new("ScreenGui")
+local frame = Instance.new("Frame")
+local corner = Instance.new("UICorner")
+local frame2 = Instance.new("Frame")
+local corner2 = Instance.new("UICorner")
+local textLabel = Instance.new("TextLabel")
+local button = Instance.new("TextButton")
+local corner3 = Instance.new("UICorner")
+local button2 = Instance.new("TextButton")
+local corner4 = Instance.new("UICorner")
+local button3 = Instance.new("TextButton")
+local corner5 = Instance.new("UICorner")
+local button4 = Instance.new("TextButton")
+local corner6 = Instance.new("UICorner")
+local button5 = Instance.new("TextButton")
+local corner7 = Instance.new("UICorner")
 
-Sg.Parent = Pr:WaitForChild("PlayerGui")
-Sg.Name = "AirwalkGui"
-Sg.ResetOnSpawn = false
+screenGui.Parent = localPlayer:WaitForChild("PlayerGui")
+screenGui.Name = "AirwalkGui"
+screenGui.ResetOnSpawn = false
 
-Mf.Parent = Sg
-Mf.Name = "MainFrame"
-Mf.Size = UDim2.new(0, 240, 0, 100)
-Mf.Position = UDim2.new(1, -250, 1, -110)
-Mf.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Mf.BackgroundTransparency = 0.6
-Mf.BorderSizePixel = 0
+frame.Parent = screenGui
+frame.Name = "MainFrame"
+frame.Size = UDim2.new(0, 240, 0, 100)
+frame.Position = UDim2.new(1, -250, 1, -110)
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.BackgroundTransparency = 0.6
+frame.BorderSizePixel = 0
 
-Uc.Parent = Mf
-Uc.CornerRadius = UDim.new(0, 12)
+corner.Parent = frame
+corner.CornerRadius = UDim.new(0, 12)
 
-Tb.Parent = Mf
-Tb.Name = "TitleBar"
-Tb.Size = UDim2.new(1, 0, 0, 25)
-Tb.BackgroundTransparency = 1
-Tb.BorderSizePixel = 0
+frame2.Parent = frame
+frame2.Name = "TitleBar"
+frame2.Size = UDim2.new(1, 0, 0, 25)
+frame2.BackgroundTransparency = 1
+frame2.BorderSizePixel = 0
 
-Tc.Parent = Tb
-Tc.CornerRadius = UDim.new(0, 12)
+corner2.Parent = frame2
+corner2.CornerRadius = UDim.new(0, 12)
 
-local Al = Instance.new("TextLabel")
+local textLabel2 = Instance.new("TextLabel")
 
-Al.Parent = Tb
-Al.Size = UDim2.new(0, 80, 1, 0)
-Al.Position = UDim2.new(0, 5, 0, 0)
-Al.BackgroundTransparency = 1
-Al.Text = "AK ADMIN"
-Al.TextColor3 = Color3.fromRGB(255, 255, 255)
-Al.Font = Enum.Font.Arial
-Al.TextSize = 10
-Al.TextXAlignment = Enum.TextXAlignment.Left
+textLabel2.Parent = frame2
+textLabel2.Size = UDim2.new(0, 80, 1, 0)
+textLabel2.Position = UDim2.new(0, 5, 0, 0)
+textLabel2.BackgroundTransparency = 1
+textLabel2.Text = "AK ADMIN"
+textLabel2.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel2.Font = Enum.Font.Arial
+textLabel2.TextSize = 10
+textLabel2.TextXAlignment = Enum.TextXAlignment.Left
 
-Tl.Parent = Tb
-Tl.Size = UDim2.new(1, 0, 1, 0)
-Tl.Position = UDim2.new(0, 0, 0, 0)
-Tl.BackgroundTransparency = 1
-Tl.Text = "Walk on Air"
-Tl.TextColor3 = Color3.fromRGB(255, 255, 255)
-Tl.Font = Enum.Font.Arial
-Tl.TextSize = 16
-Tl.TextXAlignment = Enum.TextXAlignment.Center
+textLabel.Parent = frame2
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.Position = UDim2.new(0, 0, 0, 0)
+textLabel.BackgroundTransparency = 1
+textLabel.Text = "Walk on Air"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.Font = Enum.Font.Arial
+textLabel.TextSize = 16
+textLabel.TextXAlignment = Enum.TextXAlignment.Center
 
-Xb.Parent = Tb
-Xb.Name = "CloseButton"
-Xb.Size = UDim2.new(0, 20, 0, 20)
-Xb.Position = UDim2.new(1, -23, 0, 2.5)
-Xb.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Xb.BackgroundTransparency = 0.5
-Xb.BorderSizePixel = 0
-Xb.Text = "×"
-Xb.TextColor3 = Color3.fromRGB(255, 255, 255)
-Xb.Font = Enum.Font.Arial
-Xb.TextSize = 16
+button.Parent = frame2
+button.Name = "CloseButton"
+button.Size = UDim2.new(0, 20, 0, 20)
+button.Position = UDim2.new(1, -23, 0, 2.5)
+button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button.BackgroundTransparency = 0.5
+button.BorderSizePixel = 0
+button.Text = "×"
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.Font = Enum.Font.Arial
+button.TextSize = 16
 
-Xc.Parent = Xb
-Xc.CornerRadius = UDim.new(0, 6)
+corner3.Parent = button
+corner3.CornerRadius = UDim.new(0, 6)
 
-Ob.Parent = Mf
-Ob.Name = "OnOffButton"
-Ob.Size = UDim2.new(0, 65, 0, 28)
-Ob.Position = UDim2.new(0, 10, 0, 32)
-Ob.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-Ob.BackgroundTransparency = 0.7
-Ob.BorderSizePixel = 0
-Ob.Text = "ON"
-Ob.TextColor3 = Color3.fromRGB(255, 255, 255)
-Ob.Font = Enum.Font.Arial
-Ob.TextSize = 14
+button2.Parent = frame
+button2.Name = "OnOffButton"
+button2.Size = UDim2.new(0, 65, 0, 28)
+button2.Position = UDim2.new(0, 10, 0, 32)
+button2.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+button2.BackgroundTransparency = 0.7
+button2.BorderSizePixel = 0
+button2.Text = "ON"
+button2.TextColor3 = Color3.fromRGB(255, 255, 255)
+button2.Font = Enum.Font.Arial
+button2.TextSize = 14
 
-Oc.Parent = Ob
-Oc.CornerRadius = UDim.new(0, 8)
+corner4.Parent = button2
+corner4.CornerRadius = UDim.new(0, 8)
 
-Ub.Parent = Mf
-Ub.Name = "UpButton"
-Ub.Size = UDim2.new(0, 65, 0, 28)
-Ub.Position = UDim2.new(0, 85, 0, 32)
-Ub.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Ub.BackgroundTransparency = 0.7
-Ub.BorderSizePixel = 0
-Ub.Text = "▲"
-Ub.TextColor3 = Color3.fromRGB(255, 255, 255)
-Ub.Font = Enum.Font.Arial
-Ub.TextSize = 14
+button3.Parent = frame
+button3.Name = "UpButton"
+button3.Size = UDim2.new(0, 65, 0, 28)
+button3.Position = UDim2.new(0, 85, 0, 32)
+button3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button3.BackgroundTransparency = 0.7
+button3.BorderSizePixel = 0
+button3.Text = "▲"
+button3.TextColor3 = Color3.fromRGB(255, 255, 255)
+button3.Font = Enum.Font.Arial
+button3.TextSize = 14
 
-Uc2.Parent = Ub
-Uc2.CornerRadius = UDim.new(0, 8)
+corner5.Parent = button3
+corner5.CornerRadius = UDim.new(0, 8)
 
-Db.Parent = Mf
-Db.Name = "DownButton"
-Db.Size = UDim2.new(0, 65, 0, 28)
-Db.Position = UDim2.new(0, 160, 0, 32)
-Db.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Db.BackgroundTransparency = 0.7
-Db.BorderSizePixel = 0
-Db.Text = "▼"
-Db.TextColor3 = Color3.fromRGB(255, 255, 255)
-Db.Font = Enum.Font.Arial
-Db.TextSize = 14
+button4.Parent = frame
+button4.Name = "DownButton"
+button4.Size = UDim2.new(0, 65, 0, 28)
+button4.Position = UDim2.new(0, 160, 0, 32)
+button4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button4.BackgroundTransparency = 0.7
+button4.BorderSizePixel = 0
+button4.Text = "▼"
+button4.TextColor3 = Color3.fromRGB(255, 255, 255)
+button4.Font = Enum.Font.Arial
+button4.TextSize = 14
 
-Dc.Parent = Db
-Dc.CornerRadius = UDim.new(0, 8)
+corner6.Parent = button4
+corner6.CornerRadius = UDim.new(0, 8)
 
-Vb.Parent = Mf
-Vb.Name = "VisibilityButton"
-Vb.Size = UDim2.new(0, 220, 0, 28)
-Vb.Position = UDim2.new(0, 10, 0, 65)
-Vb.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Vb.BackgroundTransparency = 0.7
-Vb.BorderSizePixel = 0
-Vb.Text = "Show Platform"
-Vb.TextColor3 = Color3.fromRGB(255, 255, 255)
-Vb.Font = Enum.Font.Arial
-Vb.TextSize = 14
+button5.Parent = frame
+button5.Name = "VisibilityButton"
+button5.Size = UDim2.new(0, 220, 0, 28)
+button5.Position = UDim2.new(0, 10, 0, 65)
+button5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button5.BackgroundTransparency = 0.7
+button5.BorderSizePixel = 0
+button5.Text = "Show Platform"
+button5.TextColor3 = Color3.fromRGB(255, 255, 255)
+button5.Font = Enum.Font.Arial
+button5.TextSize = 14
 
-Vc.Parent = Vb
-Vc.CornerRadius = UDim.new(0, 8)
+corner7.Parent = button5
+corner7.CornerRadius = UDim.new(0, 8)
 
-local dg = false
+local flag = false
 local di, ds, sp
 
 local function Ud(input)
     local dt = input.Position - ds
-    Mf.Position = UDim2.new(
+    frame.Position = UDim2.new(
         sp.X.Scale,
         sp.X.Offset + dt.X,
         sp.Y.Scale,
@@ -174,106 +174,106 @@ local function Ud(input)
     )
 end
 
-Tb.InputBegan:Connect(function(input)
+frame2.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-        dg = true
+        flag = true
         ds = input.Position
-        sp = Mf.Position
+        sp = frame.Position
         
         input.Changed:Connect(function()
             if input.UserInputState == Enum.UserInputState.End then
-                dg = false
+                flag = false
             end
         end)
     end
 end)
 
-Tb.InputChanged:Connect(function(input)
+frame2.InputChanged:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
         di = input
     end
 end)
 
-Ui.InputChanged:Connect(function(input)
-    if input == di and dg then
+userinputservice.InputChanged:Connect(function(input)
+    if input == di and flag then
         Ud(input)
     end
 end)
 
-Xb.MouseButton1Click:Connect(function()
-    Sg:Destroy()
+button.MouseButton1Click:Connect(function()
+    screenGui:Destroy()
 end)
 
 local function Rp()
-    local ch = Pr.Character
-    if ch then
-        local hr = ch:FindFirstChild("HumanoidRootPart")
-        if hr then
-            bp.Position = Vector3.new(
-                hr.Position.X,
-                bp.Position.Y,
-                hr.Position.Z
+    local character = localPlayer.Character
+    if character then
+        local humanoid = character:FindFirstChild("HumanoidRootPart")
+        if humanoid then
+            part.Position = Vector3.new(
+                humanoid.Position.X,
+                part.Position.Y,
+                humanoid.Position.Z
             )
         end
     end
 end
 
 local function Tv()
-    Iv = not Iv
-    bp.Transparency = Iv and 0.3 or 1
+    flag2 = not flag2
+    part.Transparency = flag2 and 0.3 or 1
     
-    if Iv then
-        bp.Material = Enum.Material.Neon
-        Vb.Text = "Hide Platform"
+    if flag2 then
+        part.Material = Enum.Material.Neon
+        button5.Text = "Hide Platform"
     else
-        bp.Material = Enum.Material.SmoothPlastic
-        Vb.Text = "Show Platform"
+        part.Material = Enum.Material.SmoothPlastic
+        button5.Text = "Show Platform"
     end
 end
 
 local function Ta()
-    Aw = not Aw
-    if Aw then
-        Ob.Text = "ON"
-        Ob.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-        if not bp:IsDescendantOf(workspace) then
-            bp = Cb()
+    flag = not flag
+    if flag then
+        button2.Text = "ON"
+        button2.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+        if not part:IsDescendantOf(workspace) then
+            part = Cb()
         end
     else
-        Ob.Text = "OFF"
-        Ob.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-        bp:Destroy()
+        button2.Text = "OFF"
+        button2.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+        part:Destroy()
     end
 end
 
-Rs.Heartbeat:Connect(function()
-    if Mu then
-        bp.Position = bp.Position + Vector3.new(0, 0.5, 0)
-    elseif Md then
-        bp.Position = bp.Position - Vector3.new(0, 0.5, 0)
+runservice.Heartbeat:Connect(function()
+    if flag3 then
+        part.Position = part.Position + Vector3.new(0, 0.5, 0)
+    elseif flag4 then
+        part.Position = part.Position - Vector3.new(0, 0.5, 0)
     end
 end)
 
-Ob.MouseButton1Click:Connect(Ta)
-Vb.MouseButton1Click:Connect(Tv)
+button2.MouseButton1Click:Connect(Ta)
+button5.MouseButton1Click:Connect(Tv)
 
-Ub.MouseButton1Down:Connect(function() Mu = true end)
-Ub.MouseButton1Up:Connect(function() Mu = false end)
-Ub.MouseLeave:Connect(function() Mu = false end)
+button3.MouseButton1Down:Connect(function() flag3 = true end)
+button3.MouseButton1Up:Connect(function() flag3 = false end)
+button3.MouseLeave:Connect(function() flag3 = false end)
 
-Db.MouseButton1Down:Connect(function() Md = true end)
-Db.MouseButton1Up:Connect(function() Md = false end)
-Db.MouseLeave:Connect(function() Md = false end)
+button4.MouseButton1Down:Connect(function() flag4 = true end)
+button4.MouseButton1Up:Connect(function() flag4 = false end)
+button4.MouseLeave:Connect(function() flag4 = false end)
 
-Rs.Heartbeat:Connect(function()
-    local ch = Pr.Character
-    if ch and Aw then
-        local hr = ch:FindFirstChild("HumanoidRootPart")
-        if hr then
-            bp.Position = Vector3.new(
-                hr.Position.X,
-                bp.Position.Y,
-                hr.Position.Z
+runservice.Heartbeat:Connect(function()
+    local character = localPlayer.Character
+    if character and flag then
+        local humanoid = character:FindFirstChild("HumanoidRootPart")
+        if humanoid then
+            part.Position = Vector3.new(
+                humanoid.Position.X,
+                part.Position.Y,
+                humanoid.Position.Z
             )
         end
     end
@@ -281,13 +281,13 @@ end)
 
 Rp()
 
-Pr.CharacterAdded:Connect(function(character)
+localPlayer.CharacterAdded:Connect(function(character)
     wait(0.5)
     Rp()
 end)
 
-Sg.DescendantRemoving:Connect(function(descendant)
-    if descendant == Mf then
-        Mf.Parent = Sg
+screenGui.DescendantRemoving:Connect(function(descendant)
+    if descendant == frame then
+        frame.Parent = screenGui
     end
 end)

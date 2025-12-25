@@ -63,9 +63,9 @@ local function getAnimationName(animationId)
 end
 
 -- GUI Creation
-local gui = Instance.new("ScreenGui")
-gui.Name = "PremiumAnimationLogger"
-gui.ResetOnSpawn = false
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "PremiumAnimationLogger"
+screenGui.ResetOnSpawn = false
 
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, CONFIG.GUI_WIDTH, 0, CONFIG.GUI_HEIGHT)
@@ -74,7 +74,7 @@ frame.BackgroundColor3 = THEME.BACKGROUND
 frame.BackgroundTransparency = CONFIG.TRANSPARENCY
 frame.BorderSizePixel = 0
 frame.ClipsDescendants = true
-frame.Parent = gui
+frame.Parent = screenGui
 
 Instance.new("UICorner", frame).CornerRadius = UDim.new(0, CONFIG.CORNER_RADIUS)
 
@@ -329,8 +329,8 @@ clearButton.MouseButton1Click:Connect(function()
 end)
 
 closeButton.MouseButton1Click:Connect(function()
-    gui:Destroy()
+    screenGui:Destroy()
 end)
 
 -- Initialize GUI
-gui.Parent = player:WaitForChild("PlayerGui")
+screenGui.Parent = player:WaitForChild("PlayerGui")

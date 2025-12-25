@@ -293,8 +293,8 @@ local function MakeInvisible()
             else
                 IsInteger = false
             end
-            local Pos = Player.Character.HumanoidRootPart.Position
-            local Pos_String = tostring(Pos)
+            local character = Player.Character.HumanoidRootPart.Position
+            local Pos_String = tostring(character)
             local Pos_Seperate = Pos_String:split(', ')
             local X = tonumber(Pos_Seperate[1])
             local Y = tonumber(Pos_Seperate[2])

@@ -1,157 +1,157 @@
-local p=game:GetService("Players")
-local t=game:GetService("TweenService")
-local u=game:GetService("UserInputService")
-local c=game:GetService("TextChatService")
-local h=game:GetService("HttpService")
+local players = game:GetService("Players")
+local tweenService = game:GetService("TweenService")
+local userInputService = game:GetService("UserInputService")
+local textChatService = game:GetService("TextChatService")
+local httpService = game:GetService("HttpService")
 
-local sg=Instance.new("ScreenGui")
-sg.Name="ChatLoggerGUI"
-sg.ResetOnSpawn=false
-sg.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name="ChatLoggerGUI"
+screenGui.ResetOnSpawn = false
+screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-local mf=Instance.new("Frame")
-mf.Name="MainFrame"
-mf.Size=UDim2.new(0,300,0,350)
-mf.Position=UDim2.new(0.5,-150,0.5,-175)
-mf.BackgroundColor3=Color3.fromRGB(0,0,0)
-mf.BackgroundTransparency=0.65
-mf.BorderSizePixel=0
-mf.ClipsDescendants=true
-mf.Parent=sg
+local frame = Instance.new("Frame")
+frame.Name="MainFrame"
+frame.Size = UDim2.new(0,300,0,350)
+frame.Position = UDim2.new(0.5,-150,0.5,-175)
+frame.BackgroundColor3 = Color3.fromRGB(0,0,0)
+frame.BackgroundTransparency = 0.65
+frame.BorderSizePixel = 0
+frame.ClipsDescendants = true
+frame.Parent = screenGui
 
-local cr=Instance.new("UICorner")
-cr.CornerRadius=UDim.new(0,10)
-cr.Parent=mf
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0,10)
+corner.Parent = frame
 
-local tb=Instance.new("Frame")
-tb.Name="TitleBar"
-tb.Size=UDim2.new(1,0,0,35)
-tb.BackgroundTransparency=1
-tb.BorderSizePixel=0
-tb.Parent=mf
+local mainFrame = Instance.new("Frame")
+mainFrame.Name="TitleBar"
+mainFrame.Size = UDim2.new(1,0,0,35)
+mainFrame.BackgroundTransparency = 1
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = frame
 
-local tt=Instance.new("TextLabel")
-tt.Size=UDim2.new(1,-80,1,0)
-tt.Position=UDim2.new(0,12,0,0)
-tt.BackgroundTransparency=1
-tt.Text="Chat Logs"
-tt.TextColor3=Color3.fromRGB(255,255,255)
-tt.TextTransparency=0.1
-tt.TextSize=14
-tt.Font=Enum.Font.GothamBold
-tt.TextXAlignment=Enum.TextXAlignment.Left
-tt.Parent=tb
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1,-80,1,0)
+textLabel.Position = UDim2.new(0,12,0,0)
+textLabel.BackgroundTransparency = 1
+textLabel.Text="Chat Logs"
+textLabel.TextColor3 = Color3.fromRGB(255,255,255)
+textLabel.TextTransparency = 0.1
+textLabel.TextSize = 14
+textLabel.Font = Enum.Font.GothamBold
+textLabel.TextXAlignment = Enum.TextXAlignment.Left
+textLabel.Parent = mainFrame
 
-local mb=Instance.new("TextButton")
-mb.Name="MinMaxButton"
-mb.Size=UDim2.new(0,25,0,25)
-mb.Position=UDim2.new(1,-60,0,5)
-mb.BackgroundColor3=Color3.fromRGB(0,0,0)
-mb.BackgroundTransparency=0.6
-mb.BorderSizePixel=0
-mb.Text="–"
-mb.TextColor3=Color3.fromRGB(255,255,255)
-mb.TextSize=16
-mb.Font=Enum.Font.GothamBold
-mb.Parent=tb
+local button = Instance.new("TextButton")
+button.Name="MinMaxButton"
+button.Size = UDim2.new(0,25,0,25)
+button.Position = UDim2.new(1,-60,0,5)
+button.BackgroundColor3 = Color3.fromRGB(0,0,0)
+button.BackgroundTransparency = 0.6
+button.BorderSizePixel = 0
+button.Text="–"
+button.TextColor3 = Color3.fromRGB(255,255,255)
+button.TextSize = 16
+button.Font = Enum.Font.GothamBold
+button.Parent = mainFrame
 
-local mc=Instance.new("UICorner")
-mc.CornerRadius=UDim.new(0,8)
-mc.Parent=mb
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0,8)
+corner.Parent = button
 
-local cb=Instance.new("TextButton")
-cb.Name="CloseButton"
-cb.Size=UDim2.new(0,25,0,25)
-cb.Position=UDim2.new(1,-30,0,5)
-cb.BackgroundColor3=Color3.fromRGB(0,0,0)
-cb.BackgroundTransparency=0.6
-cb.BorderSizePixel=0
-cb.Text="×"
-cb.TextColor3=Color3.fromRGB(255,255,255)
-cb.TextSize=16
-cb.Font=Enum.Font.GothamBold
-cb.Parent=tb
+local button = Instance.new("TextButton")
+button.Name="CloseButton"
+button.Size = UDim2.new(0,25,0,25)
+button.Position = UDim2.new(1,-30,0,5)
+button.BackgroundColor3 = Color3.fromRGB(0,0,0)
+button.BackgroundTransparency = 0.6
+button.BorderSizePixel = 0
+button.Text="×"
+button.TextColor3 = Color3.fromRGB(255,255,255)
+button.TextSize = 16
+button.Font = Enum.Font.GothamBold
+button.Parent = mainFrame
 
-local cc=Instance.new("UICorner")
-cc.CornerRadius=UDim.new(0,8)
-cc.Parent=cb
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0,8)
+corner.Parent = button
 
-local wf=Instance.new("Frame")
-wf.Name="WebhookFrame"
-wf.Size=UDim2.new(1,-16,0,30)
-wf.Position=UDim2.new(0,8,0,40)
-wf.BackgroundColor3=Color3.fromRGB(0,0,0)
-wf.BackgroundTransparency=0.7
-wf.BorderSizePixel=0
-wf.Parent=mf
+local mainFrame = Instance.new("Frame")
+mainFrame.Name="WebhookFrame"
+mainFrame.Size = UDim2.new(1,-16,0,30)
+mainFrame.Position = UDim2.new(0,8,0,40)
+mainFrame.BackgroundColor3 = Color3.fromRGB(0,0,0)
+mainFrame.BackgroundTransparency = 0.7
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = frame
 
-local wc=Instance.new("UICorner")
-wc.CornerRadius=UDim.new(0,8)
-wc.Parent=wf
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0,8)
+corner.Parent = mainFrame
 
-local wi=Instance.new("TextBox")
-wi.Name="WebhookInput"
-wi.Size=UDim2.new(1,-10,1,-4)
-wi.Position=UDim2.new(0,5,0,2)
-wi.BackgroundTransparency=1
-wi.Text=""
-wi.PlaceholderText="Discord Webhook URL"
-wi.TextColor3=Color3.fromRGB(255,255,255)
-wi.PlaceholderColor3=Color3.fromRGB(150,150,150)
-wi.TextSize=11
-wi.Font=Enum.Font.Gotham
-wi.TextXAlignment=Enum.TextXAlignment.Left
-wi.ClearTextOnFocus=false
-wi.Parent=wf
+local textBox = Instance.new("TextBox")
+textBox.Name="WebhookInput"
+textBox.Size = UDim2.new(1,-10,1,-4)
+textBox.Position = UDim2.new(0,5,0,2)
+textBox.BackgroundTransparency = 1
+textBox.Text=""
+textBox.PlaceholderText="Discord Webhook URL"
+textBox.TextColor3 = Color3.fromRGB(255,255,255)
+textBox.PlaceholderColor3 = Color3.fromRGB(150,150,150)
+textBox.TextSize = 11
+textBox.Font = Enum.Font.Gotham
+textBox.TextXAlignment = Enum.TextXAlignment.Left
+textBox.ClearTextOnFocus = false
+textBox.Parent = mainFrame
 
-local sf=Instance.new("ScrollingFrame")
-sf.Name="ScrollFrame"
-sf.Size=UDim2.new(1,-16,1,-85)
-sf.Position=UDim2.new(0,8,0,75)
-sf.BackgroundTransparency=1
-sf.BorderSizePixel=0
-sf.ScrollBarThickness=3
-sf.ScrollBarImageColor3=Color3.fromRGB(50,50,50)
-sf.ScrollBarImageTransparency=0.3
-sf.CanvasSize=UDim2.new(0,0,0,0)
-sf.Parent=mf
+local frame = Instance.new("ScrollingFrame")
+frame.Name="ScrollFrame"
+frame.Size = UDim2.new(1,-16,1,-85)
+frame.Position = UDim2.new(0,8,0,75)
+frame.BackgroundTransparency = 1
+frame.BorderSizePixel = 0
+frame.ScrollBarThickness = 3
+frame.ScrollBarImageColor3 = Color3.fromRGB(50,50,50)
+frame.ScrollBarImageTransparency = 0.3
+frame.CanvasSize = UDim2.new(0,0,0,0)
+frame.Parent = frame
 
-local sp=Instance.new("UIPadding")
-sp.PaddingTop=UDim.new(0,5)
-sp.PaddingBottom=UDim.new(0,5)
-sp.Parent=sf
+local padding = Instance.new("UIPadding")
+padding.PaddingTop = UDim.new(0,5)
+padding.PaddingBottom = UDim.new(0,5)
+padding.Parent = frame
 
-local ll=Instance.new("UIListLayout")
-ll.SortOrder=Enum.SortOrder.LayoutOrder
-ll.Padding=UDim.new(0,4)
-ll.Parent=sf
+local listLayout = Instance.new("UIListLayout")
+listLayout.SortOrder = Enum.SortOrder.LayoutOrder
+listLayout.Padding = UDim.new(0,4)
+listLayout.Parent = frame
 
 local wh=""
 
-wi.FocusLost:Connect(function()
-wh=wi.Text
+textBox.FocusLost:Connect(function()
+wh = textBox.Text
 end)
 
-local function sd(pl,msg)
+local function sendMessage(pl,msg)
 if wh=="" or not string.find(wh,"discord.com/api/webhooks") then
 return
 end
 
 local thu=""
-local s,r=pcall(function()
-return h:GetAsync("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="..pl.UserId.."&size=420x420&format=Png&isCircular=false")
+local s,r = pcall(function()
+return httpService:GetAsync("https://thumbnails.roblox.com/v1/users/avatar - headshot?userIds="..pl.UserId.."&size = 420x420&format = Png&isCircular = false")
 end)
 
 if s and r then
-local dec=h:JSONDecode(r)
+local dec = httpService:JSONDecode(r)
 if dec.data and dec.data[1] and dec.data[1].imageUrl then
-thu=dec.data[1].imageUrl
+thu = dec.data[1].imageUrl
 end
 end
 
-local d={
+local config={
 ["username"]="AK ADMIN Chat logs",
-["avatar_url"]="https://cdn.discordapp.com/attachments/1425353680399634464/1442209621275181066/574B62BE-F582-47A5-98C5-2B79C07B51D3.png?ex=692499e0&is=69234860&hm=9c05d354f6b309cab6851c780aeff7af6018bcdb48073b6672579c3605375f01&",
+["avatar_url"]="https://cdn.discordapp.com/attachments/1425353680399634464/1442209621275181066/574B62BE - F582 - 47A5 - 98C5 - 2B79C07B51D3.png?ex = 692499e0&is = 69234860&hm = 9c05d354f6b309cab6851c780aeff7af6018bcdb48073b6672579c3605375f01&",
 ["embeds"]={{
 ["color"]=0x202020,
 ["author"]={
@@ -164,197 +164,197 @@ local d={
 }}
 }
 
-local j=h:JSONEncode(d)
+local j = httpService:JSONEncode(config)
 
 pcall(function()
 return request({
-Url=wh,
+Url = wh,
 Method="POST",
 Headers={
-["Content-Type"]="application/json"
+["Content - Type"]="application/json"
 },
-Body=j
+Body = j
 })
 end)
 end
 
 local function cm(pl,msg)
-local mfr=Instance.new("Frame")
-mfr.Size=UDim2.new(1,-8,0,45)
-mfr.BackgroundColor3=Color3.fromRGB(0,0,0)
-mfr.BackgroundTransparency=0.7
-mfr.BorderSizePixel=0
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(1,-8,0,45)
+mainFrame.BackgroundColor3 = Color3.fromRGB(0,0,0)
+mainFrame.BackgroundTransparency = 0.7
+mainFrame.BorderSizePixel = 0
 
-local mg=Instance.new("UIGradient")
-mg.Color=ColorSequence.new({
+local uigradient = Instance.new("UIGradient")
+uigradient.Color = ColorSequence.new({
 ColorSequenceKeypoint.new(0,Color3.fromRGB(15,15,15)),
 ColorSequenceKeypoint.new(1,Color3.fromRGB(0,0,0))
 })
-mg.Transparency=NumberSequence.new(0.7)
-mg.Parent=mfr
+uigradient.Transparency = NumberSequence.new(0.7)
+uigradient.Parent = mainFrame
 
-local mcr=Instance.new("UICorner")
-mcr.CornerRadius=UDim.new(0,8)
-mcr.Parent=mfr
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0,8)
+corner.Parent = mainFrame
 
-local pi=Instance.new("ImageLabel")
-pi.Size=UDim2.new(0,25,0,25)
-pi.Position=UDim2.new(0,8,0,10)
-pi.BackgroundColor3=Color3.fromRGB(0,0,0)
-pi.BackgroundTransparency=0.5
-pi.BorderSizePixel=0
-pi.Image=p:GetUserThumbnailAsync(pl.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size48x48)
-pi.ImageTransparency=0.1
+local imagelabel = Instance.new("ImageLabel")
+imagelabel.Size = UDim2.new(0,25,0,25)
+imagelabel.Position = UDim2.new(0,8,0,10)
+imagelabel.BackgroundColor3 = Color3.fromRGB(0,0,0)
+imagelabel.BackgroundTransparency = 0.5
+imagelabel.BorderSizePixel = 0
+imagelabel.Image = players:GetUserThumbnailAsync(pl.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size48x48)
+imagelabel.ImageTransparency = 0.1
 
-local ic=Instance.new("UICorner")
-ic.CornerRadius=UDim.new(1,0)
-ic.Parent=pi
-pi.Parent=mfr
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(1,0)
+corner.Parent = imagelabel
+imagelabel.Parent = mainFrame
 
-local pn=Instance.new("TextBox")
-pn.Size=UDim2.new(1,-130,0,20)
-pn.Position=UDim2.new(0,40,0,3)
-pn.BackgroundTransparency=1
-pn.Text=pl.Name or pl.DisplayName
-pn.TextColor3=Color3.fromRGB(255,255,255)
-pn.TextTransparency=0.1
-pn.TextSize=13
-pn.Font=Enum.Font.GothamBold
-pn.TextXAlignment=Enum.TextXAlignment.Left
-pn.TextEditable=false
-pn.ClearTextOnFocus=false
-pn.Parent=mfr
+local textBox2 = Instance.new("TextBox")
+textBox2.Size = UDim2.new(1,-130,0,20)
+textBox2.Position = UDim2.new(0,40,0,3)
+textBox2.BackgroundTransparency = 1
+textBox2.Text = pl.Name or pl.DisplayName
+textBox2.TextColor3 = Color3.fromRGB(255,255,255)
+textBox2.TextTransparency = 0.1
+textBox2.TextSize = 13
+textBox2.Font = Enum.Font.GothamBold
+textBox2.TextXAlignment = Enum.TextXAlignment.Left
+textBox2.TextEditable = false
+textBox2.ClearTextOnFocus = false
+textBox2.Parent = mainFrame
 
-local mt=Instance.new("TextBox")
-mt.Size=UDim2.new(1,-130,0,20)
-mt.Position=UDim2.new(0,40,0,22)
-mt.BackgroundTransparency=1
-mt.Text=msg
-mt.TextColor3=Color3.fromRGB(200,200,200)
-mt.TextTransparency=0.2
-mt.TextSize=12
-mt.Font=Enum.Font.Gotham
-mt.TextXAlignment=Enum.TextXAlignment.Left
-mt.TextWrapped=true
-mt.TextEditable=false
-mt.ClearTextOnFocus=false
-mt.MultiLine=true
-mt.Parent=mfr
+local textBox3 = Instance.new("TextBox")
+textBox3.Size = UDim2.new(1,-130,0,20)
+textBox3.Position = UDim2.new(0,40,0,22)
+textBox3.BackgroundTransparency = 1
+textBox3.Text = msg
+textBox3.TextColor3 = Color3.fromRGB(200,200,200)
+textBox3.TextTransparency = 0.2
+textBox3.TextSize = 12
+textBox3.Font = Enum.Font.Gotham
+textBox3.TextXAlignment = Enum.TextXAlignment.Left
+textBox3.TextWrapped = true
+textBox3.TextEditable = false
+textBox3.ClearTextOnFocus = false
+textBox3.MultiLine = true
+textBox3.Parent = mainFrame
 
-local cpb=Instance.new("TextButton")
-cpb.Size=UDim2.new(0,25,0,25)
-cpb.Position=UDim2.new(1,-33,0,10)
-cpb.BackgroundColor3=Color3.fromRGB(0,0,0)
-cpb.BackgroundTransparency=0.7
-cpb.BorderSizePixel=0
-cpb.Text="📋"
-cpb.TextColor3=Color3.fromRGB(255,255,255)
-cpb.TextSize=12
-cpb.Font=Enum.Font.Gotham
-cpb.Parent=mfr
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0,25,0,25)
+button.Position = UDim2.new(1,-33,0,10)
+button.BackgroundColor3 = Color3.fromRGB(0,0,0)
+button.BackgroundTransparency = 0.7
+button.BorderSizePixel = 0
+button.Text="📋"
+button.TextColor3 = Color3.fromRGB(255,255,255)
+button.TextSize = 12
+button.Font = Enum.Font.Gotham
+button.Parent = mainFrame
 
-local cpc=Instance.new("UICorner")
-cpc.CornerRadius=UDim.new(0,8)
-cpc.Parent=cpb
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0,8)
+corner.Parent = button
 
-cpb.MouseEnter:Connect(function()
-t:Create(cpb,TweenInfo.new(0.2),{BackgroundTransparency=0.5}):Play()
+button.MouseEnter:Connect(function()
+tweenService:Create(button,TweenInfo.new(0.2),{BackgroundTransparency = 0.5}):Play()
 end)
 
-cpb.MouseLeave:Connect(function()
-t:Create(cpb,TweenInfo.new(0.2),{BackgroundTransparency=0.7}):Play()
+button.MouseLeave:Connect(function()
+tweenService:Create(button,TweenInfo.new(0.2),{BackgroundTransparency = 0.7}):Play()
 end)
 
-cpb.MouseButton1Click:Connect(function()
+button.MouseButton1Click:Connect(function()
 setclipboard(msg)
-local ot=cpb.Text
-cpb.Text="✓"
+local ot = button.Text
+button.Text="✓"
 wait(1)
-cpb.Text=ot
+button.Text = ot
 end)
 
-sd(pl,msg)
+sendMessage(pl,msg)
 
-return mfr
+return mainFrame
 end
 
-local function ed(g,hdl)
-local dr,di,ds,sp
+local function ed(position,hdl)
+local dr,di,ds,padding
 
-local function ui(inp)
-local d=inp.Position-ds
-local np=UDim2.new(sp.X.Scale,sp.X.Offset+d.X,sp.Y.Scale,sp.Y.Offset+d.Y)
-g.Position=np
+local function ui(input)
+local config = input.Position - ds
+local np = UDim2.new(padding.X.Scale,padding.X.Offset + config.X,padding.Y.Scale,padding.Y.Offset + config.Y)
+position.Position = np
 end
 
-hdl.InputBegan:Connect(function(inp)
-if inp.UserInputType==Enum.UserInputType.MouseButton1 or inp.UserInputType==Enum.UserInputType.Touch then
-dr=true
-ds=inp.Position
-sp=g.Position
+hdl.InputBegan:Connect(function(input)
+if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+dr = true
+ds = input.Position
+padding = position.Position
 
-inp.Changed:Connect(function()
-if inp.UserInputState==Enum.UserInputState.End then
-dr=false
-end
-end)
-end
-end)
-
-hdl.InputChanged:Connect(function(inp)
-if inp.UserInputType==Enum.UserInputType.MouseMovement or inp.UserInputType==Enum.UserInputType.Touch then
-di=inp
-end
-end)
-
-u.InputChanged:Connect(function(inp)
-if inp==di and dr then
-ui(inp)
+input.Changed:Connect(function()
+if input.UserInputState == Enum.UserInputState.End then
+dr = false
 end
 end)
 end
-
-ed(mf,tb)
-
-local m=false
-mb.MouseButton1Click:Connect(function()
-m=not m
-local ts=m and UDim2.new(0,300,0,35) or UDim2.new(0,300,0,350)
-
-mb.Text=m and "+" or "–"
-
-t:Create(mf,TweenInfo.new(0.3,Enum.EasingStyle.Quad),{Size=ts}):Play()
-
-mf.ClipsDescendants=m
 end)
 
-mb.MouseEnter:Connect(function()
-t:Create(mb,TweenInfo.new(0.2),{BackgroundTransparency=0.4}):Play()
+hdl.InputChanged:Connect(function(input)
+if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+di = input
+end
 end)
 
-mb.MouseLeave:Connect(function()
-t:Create(mb,TweenInfo.new(0.2),{BackgroundTransparency=0.6}):Play()
+userInputService.InputChanged:Connect(function(input)
+if input == di and dr then
+ui(input)
+end
+end)
+end
+
+ed(frame,mainFrame)
+
+local flag = false
+button.MouseButton1Click:Connect(function()
+flag = not flag
+local ts = flag and UDim2.new(0,300,0,35) or UDim2.new(0,300,0,350)
+
+button.Text = flag and "+" or "–"
+
+tweenService:Create(frame,TweenInfo.new(0.3,Enum.EasingStyle.Quad),{Size = ts}):Play()
+
+frame.ClipsDescendants = flag
 end)
 
-cb.MouseEnter:Connect(function()
-t:Create(cb,TweenInfo.new(0.2),{BackgroundTransparency=0.4}):Play()
+button.MouseEnter:Connect(function()
+tweenService:Create(button,TweenInfo.new(0.2),{BackgroundTransparency = 0.4}):Play()
 end)
 
-cb.MouseLeave:Connect(function()
-t:Create(cb,TweenInfo.new(0.2),{BackgroundTransparency=0.6}):Play()
+button.MouseLeave:Connect(function()
+tweenService:Create(button,TweenInfo.new(0.2),{BackgroundTransparency = 0.6}):Play()
 end)
 
-cb.MouseButton1Click:Connect(function()
-sg:Destroy()
+button.MouseEnter:Connect(function()
+tweenService:Create(button,TweenInfo.new(0.2),{BackgroundTransparency = 0.4}):Play()
+end)
+
+button.MouseLeave:Connect(function()
+tweenService:Create(button,TweenInfo.new(0.2),{BackgroundTransparency = 0.6}):Play()
+end)
+
+button.MouseButton1Click:Connect(function()
+screenGui:Destroy()
 end)
 
 local function scl()
-local s,tc=pcall(function()
-return c.TextChannels
+local s,tc = pcall(function()
+return textChatService.TextChannels
 end)
 
 if s and tc then
-local gc=tc:FindFirstChild("RBXGeneral")
+local gc = tc:FindFirstChild("RBXGeneral")
 
 if gc then
 gc.MessageReceived:Connect(function(tcm)
@@ -362,58 +362,58 @@ if string.find(tcm.Text,"#") then
 return
 end
 
-local pl=p:GetPlayerByUserId(tcm.TextSource.UserId)
+local pl = players:GetPlayerByUserId(tcm.TextSource.UserId)
 
 if pl then
-local chm=cm(pl,tcm.Text)
-chm.Parent=sf
+local chm = cm(pl,tcm.Text)
+chm.Parent = frame
 
-local cs=ll.AbsoluteContentSize
-sf.CanvasSize=UDim2.new(0,0,0,cs.Y)
+local cs = listLayout.AbsoluteContentSize
+frame.CanvasSize = UDim2.new(0,0,0,cs.Y)
 
-local cy=sf.CanvasSize.Y.Offset
-local wy=sf.AbsoluteWindowSize.Y
-local cuy=sf.CanvasPosition.Y
-local tol=10
+local cy = frame.CanvasSize.Y.Offset
+local wy = frame.AbsoluteWindowSize.Y
+local cuy = frame.CanvasPosition.Y
+local value = 10
 
-if cuy>=(cy-wy-tol) then
-t:Create(sf,TweenInfo.new(0.3),{CanvasPosition=Vector2.new(0,cs.Y)}):Play()
+if cuy>=(cy - wy - value) then
+tweenService:Create(frame,TweenInfo.new(0.3),{CanvasPosition = Vector2.new(0,cs.Y)}):Play()
 end
 end
 end)
 end
 else
-p.PlayerChatted:Connect(function(ct,pl,msg)
+players.PlayerChatted:Connect(function(ct,pl,msg)
 if string.find(msg,"#") then
 return
 end
 
-local chm=cm(pl,msg)
-chm.Parent=sf
+local chm = cm(pl,msg)
+chm.Parent = frame
 
-local cs=ll.AbsoluteContentSize
-sf.CanvasSize=UDim2.new(0,0,0,cs.Y)
+local cs = listLayout.AbsoluteContentSize
+frame.CanvasSize = UDim2.new(0,0,0,cs.Y)
 
-local cy=sf.CanvasSize.Y.Offset
-local wy=sf.AbsoluteWindowSize.Y
-local cuy=sf.CanvasPosition.Y
-local tol=10
+local cy = frame.CanvasSize.Y.Offset
+local wy = frame.AbsoluteWindowSize.Y
+local cuy = frame.CanvasPosition.Y
+local value = 10
 
-if cuy>=(cy-wy-tol) then
-t:Create(sf,TweenInfo.new(0.3),{CanvasPosition=Vector2.new(0,cs.Y)}):Play()
+if cuy>=(cy - wy - value) then
+tweenService:Create(frame,TweenInfo.new(0.3),{CanvasPosition = Vector2.new(0,cs.Y)}):Play()
 end
 end)
 end
 end
 
 local function opa(pl)
-if pl==p.LocalPlayer then
-sg.Parent=pl.PlayerGui
+if pl == players.LocalPlayer then
+screenGui.Parent = pl.PlayerGui
 scl()
 end
 end
 
-p.PlayerAdded:Connect(opa)
-for _,pl in ipairs(p:GetPlayers()) do
+players.PlayerAdded:Connect(opa)
+for _,pl in ipairs(players:GetPlayers()) do
 opa(pl)
 end

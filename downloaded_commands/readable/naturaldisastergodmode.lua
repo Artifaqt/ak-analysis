@@ -3,7 +3,7 @@ local heartbeat = runsvc.Heartbeat
 local rstepped = runsvc.RenderStepped
 local players = game:GetService("Players")
 
-local lp = players.LocalPlayer
+local localPlayer = players.LocalPlayer
 local novel = Vector3.zero
 
 local function noDamage(chr)
@@ -45,9 +45,9 @@ local function noDamage(chr)
 end
 
 -- Apply no damage to the current character
-if lp.Character then
-    noDamage(lp.Character)
+if localPlayer.Character then
+    noDamage(localPlayer.Character)
 end
 
 -- Apply no damage to future characters
-lp.CharacterAdded:Connect(noDamage)
+localPlayer.CharacterAdded:Connect(noDamage)

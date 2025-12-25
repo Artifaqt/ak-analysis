@@ -682,10 +682,10 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
     if not gameProcessed and input.KeyCode == getgenv().currentKeybind then
         toggleMovement()
         
-        local gui = PlayerGui:FindFirstChild("FaceBangGui")
-        if gui then
-            if gui:FindFirstChild("MainFrame") and gui.MainFrame.Visible then
-                local toggleButton = gui.MainFrame.ToggleButton
+        local playerGui = PlayerGui:FindFirstChild("FaceBangGui")
+        if playerGui then
+            if playerGui:FindFirstChild("MainFrame") and playerGui.MainFrame.Visible then
+                local toggleButton = playerGui.MainFrame.ToggleButton
                 if getgenv().facefuckactive then
                     toggleButton.Text = "ON"
                     toggleButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
@@ -696,8 +696,8 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
                     toggleButton.BackgroundTransparency = 0.6
                 end
             end
-            if gui:FindFirstChild("MinimizedFrame") and gui.MinimizedFrame.Visible then
-                local minimizedToggle = gui.MinimizedFrame.MinimizedToggle
+            if playerGui:FindFirstChild("MinimizedFrame") and playerGui.MinimizedFrame.Visible then
+                local minimizedToggle = playerGui.MinimizedFrame.MinimizedToggle
                 if getgenv().facefuckactive then
                     minimizedToggle.Text = "ON"
                     minimizedToggle.BackgroundColor3 = Color3.fromRGB(0, 100, 0)

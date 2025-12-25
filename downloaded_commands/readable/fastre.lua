@@ -61,9 +61,9 @@ end
 local function logPosition()
     local character = player.Character
     if character then
-        local hrp = character:FindFirstChild("HumanoidRootPart")
-        if hrp then
-            deadPos = hrp.CFrame
+        local humanoid = character:FindFirstChild("HumanoidRootPart")
+        if humanoid then
+            deadPos = humanoid.CFrame
             -- Also store camera position
             if workspace.CurrentCamera then
                 deadCam = workspace.CurrentCamera.CFrame
@@ -100,9 +100,9 @@ local characterAddedConnection = player.CharacterAdded:Connect(function(char)
     end
     
     -- Teleport to previous position if available
-    local hrp = char:WaitForChild("HumanoidRootPart", 3)
-    if hrp and deadPos then
-        hrp.CFrame = deadPos
+    local humanoid = char:WaitForChild("HumanoidRootPart", 3)
+    if humanoid and deadPos then
+        humanoid.CFrame = deadPos
         
         -- Set camera back to original position if available
         if workspace.CurrentCamera and deadCam then
@@ -117,11 +117,11 @@ local function performInstantRespawn()
     local character = player.Character
     if not character then return end
     
-    local hrp = character:FindFirstChild("HumanoidRootPart")
-    if not hrp then return end
+    local humanoid = character:FindFirstChild("HumanoidRootPart")
+    if not humanoid then return end
     
     -- Store initial position
-    deadPos = hrp.CFrame
+    deadPos = humanoid.CFrame
     
     -- Store camera position
     if workspace.CurrentCamera then
@@ -132,7 +132,7 @@ local function performInstantRespawn()
     setupDiedConnection()
     
     -- Create and show the countdown GUI
-    local gui, countdownLabel = createCountdownGUI()
+    local playerGui, countdownLabel = createCountdownGUI()
     
     -- Calculate exact same respawn timing as original script
     local respawnTime = game.Players.RespawnTime - 0.165
@@ -142,7 +142,7 @@ local function performInstantRespawn()
         local startTime = tick()
         local endTime = startTime + respawnTime
         
-        while tick() < endTime and gui and gui.Parent do
+        while tick() < endTime and playerGui and playerGui.Parent do
             local remaining = math.max(0, math.ceil(endTime - tick()))
             countdownLabel.Text = remaining .. "s"
             wait(0.05) -- Update frequently but don't add significant delay
@@ -172,8 +172,8 @@ local function performInstantRespawn()
     wait(0.85) -- Slightly longer wait to ensure CharacterAdded handles the teleport
     
     -- Remove the GUI
-    if gui and gui.Parent then
-        gui:Destroy()
+    if playerGui and playerGui.Parent then
+        playerGui:Destroy()
     end
 end
 
@@ -190,9 +190,9 @@ local function cleanup()
         characterAddedConnection:Disconnect()
     end
     
-    local gui = player.PlayerGui:FindFirstChild("RespawnCountdownGUI")
-    if gui then
-        gui:Destroy()
+    local playerGui = player.PlayerGui:FindFirstChild("RespawnCountdownGUI")
+    if playerGui then
+        playerGui:Destroy()
     end
 end
 

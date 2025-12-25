@@ -1,47 +1,47 @@
-local pl = game.Players.LocalPlayer
-local pg = pl:WaitForChild("PlayerGui")
-local ch = pl.Character or pl.CharacterAdded:Wait()
-local hm = ch:WaitForChild("Humanoid")
-local an = hm:WaitForChild("Animator")
-local ts = game:GetService("TweenService")
-local ui = game:GetService("UserInputService")
+local players = game.Players.LocalPlayer
+local playerGui = players:WaitForChild("PlayerGui")
+local character = players.Character or players.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local animator = humanoid:WaitForChild("Animator")
+local tweenService = game:GetService("TweenService")
+local userInputService = game:GetService("UserInputService")
 
-local sg = Instance.new("ScreenGui")
-sg.Name = "DomainExpansionGUI"
-sg.ResetOnSpawn = false
-sg.Parent = pg
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "DomainExpansionGUI"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = playerGui
 
-local mf = Instance.new("Frame")
-mf.Name = "MainFrame"
-mf.Size = UDim2.new(0, 280, 0, 108)
-mf.Position = UDim2.new(0.5, -140, 0.5, -54)
-mf.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-mf.BackgroundTransparency = 0.7
-mf.BorderSizePixel = 0
-mf.Active = true
-mf.Parent = sg
+local frame = Instance.new("Frame")
+frame.Name = "MainFrame"
+frame.Size = UDim2.new(0, 280, 0, 108)
+frame.Position = UDim2.new(0.5, -140, 0.5, -54)
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.BackgroundTransparency = 0.7
+frame.BorderSizePixel = 0
+frame.Active = true
+frame.Parent = screenGui
 
-local c1 = Instance.new("UICorner")
-c1.CornerRadius = UDim.new(0, 12)
-c1.Parent = mf
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 12)
+corner.Parent = frame
 
-local tb = Instance.new("Frame")
-tb.Name = "TitleBar"
-tb.Size = UDim2.new(1, 0, 0, 28)
-tb.BackgroundTransparency = 1
-tb.Active = true
-tb.Parent = mf
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "TitleBar"
+mainFrame.Size = UDim2.new(1, 0, 0, 28)
+mainFrame.BackgroundTransparency = 1
+mainFrame.Active = true
+mainFrame.Parent = frame
 
 -- GUI DRAGGING (TITLEBAR ONLY - FIXED FOR MOBILE + PC)
 local dragging = false
 local dragStart = nil
 local startPos = nil
 
-tb.InputBegan:Connect(function(input)
+mainFrame.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
         dragging = true
         dragStart = input.Position
-        startPos = mf.Position
+        startPos = frame.Position
         
         input.Changed:Connect(function()
             if input.UserInputState == Enum.UserInputState.End then
@@ -51,10 +51,10 @@ tb.InputBegan:Connect(function(input)
     end
 end)
 
-tb.InputChanged:Connect(function(input)
+mainFrame.InputChanged:Connect(function(input)
     if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
         local delta = input.Position - dragStart
-        mf.Position = UDim2.new(
+        frame.Position = UDim2.new(
             startPos.X.Scale,
             startPos.X.Offset + delta.X,
             startPos.Y.Scale,
@@ -63,184 +63,184 @@ tb.InputChanged:Connect(function(input)
     end
 end)
 
-local ak = Instance.new("TextLabel")
-ak.Size = UDim2.new(0, 70, 0, 16)
-ak.Position = UDim2.new(0, 6, 0, 6)
-ak.BackgroundTransparency = 1
-ak.Text = "AK ADMIN"
-ak.TextColor3 = Color3.fromRGB(255, 255, 255)
-ak.TextSize = 10
-ak.Font = Enum.Font.Gotham
-ak.TextXAlignment = Enum.TextXAlignment.Left
-ak.Parent = tb
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(0, 70, 0, 16)
+textLabel.Position = UDim2.new(0, 6, 0, 6)
+textLabel.BackgroundTransparency = 1
+textLabel.Text = "AK ADMIN"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.TextSize = 10
+textLabel.Font = Enum.Font.Gotham
+textLabel.TextXAlignment = Enum.TextXAlignment.Left
+textLabel.Parent = mainFrame
 
-local tt = Instance.new("TextLabel")
-tt.Size = UDim2.new(0, 150, 0, 22)
-tt.Position = UDim2.new(0.5, -75, 0, 3)
-tt.BackgroundTransparency = 1
-tt.Text = "Domain Expansion"
-tt.TextColor3 = Color3.fromRGB(255, 255, 255)
-tt.TextSize = 15
-tt.Font = Enum.Font.GothamBold
-tt.Parent = tb
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(0, 150, 0, 22)
+textLabel.Position = UDim2.new(0.5, -75, 0, 3)
+textLabel.BackgroundTransparency = 1
+textLabel.Text = "Domain Expansion"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.TextSize = 15
+textLabel.Font = Enum.Font.GothamBold
+textLabel.Parent = mainFrame
 
-local mb = Instance.new("TextButton")
-mb.Size = UDim2.new(0, 22, 0, 22)
-mb.Position = UDim2.new(1, -52, 0, 3)
-mb.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-mb.BackgroundTransparency = 0.5
-mb.Text = "-"
-mb.TextColor3 = Color3.fromRGB(255, 255, 255)
-mb.TextSize = 16
-mb.Font = Enum.Font.GothamBold
-mb.BorderSizePixel = 0
-mb.Parent = tb
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0, 22, 0, 22)
+button.Position = UDim2.new(1, -52, 0, 3)
+button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button.BackgroundTransparency = 0.5
+button.Text = "-"
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.TextSize = 16
+button.Font = Enum.Font.GothamBold
+button.BorderSizePixel = 0
+button.Parent = mainFrame
 
-local c2 = Instance.new("UICorner")
-c2.CornerRadius = UDim.new(0, 6)
-c2.Parent = mb
+local corner2 = Instance.new("UICorner")
+corner2.CornerRadius = UDim.new(0, 6)
+corner2.Parent = button
 
-local cb = Instance.new("TextButton")
-cb.Size = UDim2.new(0, 22, 0, 22)
-cb.Position = UDim2.new(1, -26, 0, 3)
-cb.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-cb.BackgroundTransparency = 0.5
-cb.Text = "X"
-cb.TextColor3 = Color3.fromRGB(255, 255, 255)
-cb.TextSize = 14
-cb.Font = Enum.Font.GothamBold
-cb.BorderSizePixel = 0
-cb.Parent = tb
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0, 22, 0, 22)
+button.Position = UDim2.new(1, -26, 0, 3)
+button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button.BackgroundTransparency = 0.5
+button.Text = "X"
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.TextSize = 14
+button.Font = Enum.Font.GothamBold
+button.BorderSizePixel = 0
+button.Parent = mainFrame
 
-local c3 = Instance.new("UICorner")
-c3.CornerRadius = UDim.new(0, 6)
-c3.Parent = cb
+local corner3 = Instance.new("UICorner")
+corner3.CornerRadius = UDim.new(0, 6)
+corner3.Parent = button
 
-local cf = Instance.new("Frame")
-cf.Name = "ContentFrame"
-cf.Size = UDim2.new(1, -16, 1, -36)
-cf.Position = UDim2.new(0, 8, 0, 32)
-cf.BackgroundTransparency = 1
-cf.Parent = mf
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "ContentFrame"
+mainFrame.Size = UDim2.new(1, -16, 1, -36)
+mainFrame.Position = UDim2.new(0, 8, 0, 32)
+mainFrame.BackgroundTransparency = 1
+mainFrame.Parent = frame
 
-local hf = Instance.new("Frame")
-hf.Name = "HipHeightFrame"
-hf.Size = UDim2.new(1, 0, 0, 28)
-hf.Position = UDim2.new(0, 0, 0, 0)
-hf.BackgroundTransparency = 1
-hf.Parent = cf
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "HipHeightFrame"
+mainFrame.Size = UDim2.new(1, 0, 0, 28)
+mainFrame.Position = UDim2.new(0, 0, 0, 0)
+mainFrame.BackgroundTransparency = 1
+mainFrame.Parent = mainFrame
 
-local hl = Instance.new("TextLabel")
-hl.Size = UDim2.new(0, 70, 0, 20)
-hl.Position = UDim2.new(0, 0, 0, 4)
-hl.BackgroundTransparency = 1
-hl.Text = "Hip Height:"
-hl.TextColor3 = Color3.fromRGB(255, 255, 255)
-hl.TextSize = 11
-hl.Font = Enum.Font.Gotham
-hl.TextXAlignment = Enum.TextXAlignment.Left
-hl.Parent = hf
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(0, 70, 0, 20)
+textLabel.Position = UDim2.new(0, 0, 0, 4)
+textLabel.BackgroundTransparency = 1
+textLabel.Text = "Hip Height:"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.TextSize = 11
+textLabel.Font = Enum.Font.Gotham
+textLabel.TextXAlignment = Enum.TextXAlignment.Left
+textLabel.Parent = mainFrame
 
-local hv = Instance.new("TextLabel")
-hv.Size = UDim2.new(0, 30, 0, 20)
-hv.Position = UDim2.new(1, -30, 0, 4)
-hv.BackgroundTransparency = 1
-hv.Text = "0"
-hv.TextColor3 = Color3.fromRGB(255, 255, 255)
-hv.TextSize = 11
-hv.Font = Enum.Font.GothamBold
-hv.TextXAlignment = Enum.TextXAlignment.Right
-hv.Parent = hf
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(0, 30, 0, 20)
+textLabel.Position = UDim2.new(1, -30, 0, 4)
+textLabel.BackgroundTransparency = 1
+textLabel.Text = "0"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.TextSize = 11
+textLabel.Font = Enum.Font.GothamBold
+textLabel.TextXAlignment = Enum.TextXAlignment.Right
+textLabel.Parent = mainFrame
 
-local sb = Instance.new("Frame")
-sb.Size = UDim2.new(1, -110, 0, 6)
-sb.Position = UDim2.new(0, 75, 0, 11)
-sb.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-sb.BorderSizePixel = 0
-sb.Active = true
-sb.Parent = hf
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(1, -110, 0, 6)
+mainFrame.Position = UDim2.new(0, 75, 0, 11)
+mainFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+mainFrame.BorderSizePixel = 0
+mainFrame.Active = true
+mainFrame.Parent = mainFrame
 
-local c4 = Instance.new("UICorner")
-c4.CornerRadius = UDim.new(0, 3)
-c4.Parent = sb
+local corner4 = Instance.new("UICorner")
+corner4.CornerRadius = UDim.new(0, 3)
+corner4.Parent = mainFrame
 
-local sf = Instance.new("Frame")
-sf.Size = UDim2.new(0, 0, 1, 0)
-sf.BackgroundColor3 = Color3.fromRGB(100, 150, 255)
-sf.BorderSizePixel = 0
-sf.Parent = sb
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 0, 1, 0)
+mainFrame.BackgroundColor3 = Color3.fromRGB(100, 150, 255)
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = mainFrame
 
-local c5 = Instance.new("UICorner")
-c5.CornerRadius = UDim.new(0, 3)
-c5.Parent = sf
+local corner5 = Instance.new("UICorner")
+corner5.CornerRadius = UDim.new(0, 3)
+corner5.Parent = mainFrame
 
-local sk = Instance.new("TextButton")
-sk.Size = UDim2.new(0, 14, 0, 14)
-sk.Position = UDim2.new(0, -7, 0.5, -7)
-sk.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-sk.Text = ""
-sk.BorderSizePixel = 0
-sk.Active = true
-sk.Parent = sb
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0, 14, 0, 14)
+button.Position = UDim2.new(0, -7, 0.5, -7)
+button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+button.Text = ""
+button.BorderSizePixel = 0
+button.Active = true
+button.Parent = mainFrame
 
-local c6 = Instance.new("UICorner")
-c6.CornerRadius = UDim.new(1, 0)
-c6.Parent = sk
+local corner6 = Instance.new("UICorner")
+corner6.CornerRadius = UDim.new(1, 0)
+corner6.Parent = button
 
-local bf = Instance.new("Frame")
-bf.Name = "ButtonFrame"
-bf.Size = UDim2.new(1, 0, 0, 32)
-bf.Position = UDim2.new(0, 0, 1, -32)
-bf.BackgroundTransparency = 1
-bf.Parent = cf
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "ButtonFrame"
+mainFrame.Size = UDim2.new(1, 0, 0, 32)
+mainFrame.Position = UDim2.new(0, 0, 1, -32)
+mainFrame.BackgroundTransparency = 1
+mainFrame.Parent = mainFrame
 
-local t1 = Instance.new("TextButton")
-t1.Size = UDim2.new(0.32, -4, 1, 0)
-t1.Position = UDim2.new(0, 0, 0, 0)
-t1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-t1.BackgroundTransparency = 0.5
-t1.Text = "Start"
-t1.TextColor3 = Color3.fromRGB(255, 255, 255)
-t1.TextSize = 11
-t1.Font = Enum.Font.Gotham
-t1.BorderSizePixel = 0
-t1.Parent = bf
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0.32, -4, 1, 0)
+button.Position = UDim2.new(0, 0, 0, 0)
+button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button.BackgroundTransparency = 0.5
+button.Text = "Start"
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.TextSize = 11
+button.Font = Enum.Font.Gotham
+button.BorderSizePixel = 0
+button.Parent = mainFrame
 
-local c7 = Instance.new("UICorner")
-c7.CornerRadius = UDim.new(0, 8)
-c7.Parent = t1
+local corner7 = Instance.new("UICorner")
+corner7.CornerRadius = UDim.new(0, 8)
+corner7.Parent = button
 
-local t2 = Instance.new("TextButton")
-t2.Size = UDim2.new(0.32, -4, 1, 0)
-t2.Position = UDim2.new(0.34, 0, 0, 0)
-t2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-t2.BackgroundTransparency = 0.5
-t2.Text = "Reverse"
-t2.TextColor3 = Color3.fromRGB(255, 255, 255)
-t2.TextSize = 11
-t2.Font = Enum.Font.Gotham
-t2.BorderSizePixel = 0
-t2.Parent = bf
+local button2 = Instance.new("TextButton")
+button2.Size = UDim2.new(0.32, -4, 1, 0)
+button2.Position = UDim2.new(0.34, 0, 0, 0)
+button2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button2.BackgroundTransparency = 0.5
+button2.Text = "Reverse"
+button2.TextColor3 = Color3.fromRGB(255, 255, 255)
+button2.TextSize = 11
+button2.Font = Enum.Font.Gotham
+button2.BorderSizePixel = 0
+button2.Parent = mainFrame
 
-local c8 = Instance.new("UICorner")
-c8.CornerRadius = UDim.new(0, 8)
-c8.Parent = t2
+local corner8 = Instance.new("UICorner")
+corner8.CornerRadius = UDim.new(0, 8)
+corner8.Parent = button2
 
-local t3 = Instance.new("TextButton")
-t3.Size = UDim2.new(0.32, -4, 1, 0)
-t3.Position = UDim2.new(0.68, 0, 0, 0)
-t3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-t3.BackgroundTransparency = 0.5
-t3.Text = "Pause"
-t3.TextColor3 = Color3.fromRGB(255, 255, 255)
-t3.TextSize = 11
-t3.Font = Enum.Font.Gotham
-t3.BorderSizePixel = 0
-t3.Parent = bf
+local button3 = Instance.new("TextButton")
+button3.Size = UDim2.new(0.32, -4, 1, 0)
+button3.Position = UDim2.new(0.68, 0, 0, 0)
+button3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button3.BackgroundTransparency = 0.5
+button3.Text = "Pause"
+button3.TextColor3 = Color3.fromRGB(255, 255, 255)
+button3.TextSize = 11
+button3.Font = Enum.Font.Gotham
+button3.BorderSizePixel = 0
+button3.Parent = mainFrame
 
-local c9 = Instance.new("UICorner")
-c9.CornerRadius = UDim.new(0, 8)
-c9.Parent = t3
+local corner9 = Instance.new("UICorner")
+corner9.CornerRadius = UDim.new(0, 8)
+corner9.Parent = button3
 
 -- NOTIFICATION GUI (TOP CENTER)
 local notifFrame = Instance.new("Frame")
@@ -250,7 +250,7 @@ notifFrame.Position = UDim2.new(0.5, -300, 0, 10)
 notifFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 notifFrame.BackgroundTransparency = 0.7
 notifFrame.BorderSizePixel = 0
-notifFrame.Parent = sg
+notifFrame.Parent = screenGui
 
 local notifCorner = Instance.new("UICorner")
 notifCorner.CornerRadius = UDim.new(0, 10)
@@ -295,7 +295,7 @@ notifText.TextWrapped = true
 notifText.TextXAlignment = Enum.TextXAlignment.Left
 notifText.Parent = notifFrame
 
-local bundleLink = "https://www.roblox.com/bundles/148351107651039/pro-builder-very-old-and-outdated"
+local bundleLink = "https://www.roblox.com/bundles/148351107651039/pro - builder - very - old - and - outdated"
 
 local linkText = Instance.new("TextLabel")
 linkText.Size = UDim2.new(1, -90, 0, 16)
@@ -335,156 +335,156 @@ notifClose.MouseButton1Click:Connect(function()
     notifFrame:Destroy()
 end)
 
-local ao = Instance.new("Animation")
-ao.AnimationId = "rbxassetid://70883871260184"
+local animation = Instance.new("Animation")
+animation.AnimationId = "rbxassetid://70883871260184"
 
 local tr = nil
-local py = false
-local rv = false
-local ps = false
-local mn = false
+local flag = false
+local flag = false
+local flag = false
+local flag = false
 
 -- SLIDER DRAGGING (FIXED FOR MOBILE + PC)
 local sliderDragging = false
 
-local originalHipHeight = hm.HipHeight
+local originalHipHeight = humanoid.HipHeight
 
 local function updateHipHeight(value)
     local pc = math.clamp(value, 0, 1)
     local ht = math.floor(originalHipHeight + (pc * 80))
-    hm.HipHeight = ht
-    hv.Text = tostring(ht)
-    sf.Size = UDim2.new(pc, 0, 1, 0)
-    sk.Position = UDim2.new(pc, -7, 0.5, -7)
+    humanoid.HipHeight = ht
+    textLabel.Text = tostring(ht)
+    mainFrame.Size = UDim2.new(pc, 0, 1, 0)
+    button.Position = UDim2.new(pc, -7, 0.5, -7)
 end
 
 -- Knob dragging
-sk.InputBegan:Connect(function(input)
+button.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
         sliderDragging = true
     end
 end)
 
 -- Track InputChanged for continuous dragging
-sk.InputChanged:Connect(function(input)
+button.InputChanged:Connect(function(input)
     if sliderDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
         local mx = input.Position.X
-        local bx = sb.AbsolutePosition.X
-        local bw = sb.AbsoluteSize.X
-        local rp = (mx - bx) / bw
+        local frame5 = mainFrame.AbsolutePosition.X
+        local frame6 = mainFrame.AbsoluteSize.X
+        local rp = (mx - frame5) / frame6
         updateHipHeight(rp)
     end
 end)
 
 -- Global input end to stop dragging
-ui.InputEnded:Connect(function(input)
+userInputService.InputEnded:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
         sliderDragging = false
     end
 end)
 
 -- Global input changed for when dragging outside the knob
-ui.InputChanged:Connect(function(input)
+userInputService.InputChanged:Connect(function(input)
     if sliderDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
         local mx = input.Position.X
-        local bx = sb.AbsolutePosition.X
-        local bw = sb.AbsoluteSize.X
-        local rp = (mx - bx) / bw
+        local frame5 = mainFrame.AbsolutePosition.X
+        local frame6 = mainFrame.AbsoluteSize.X
+        local rp = (mx - frame5) / frame6
         updateHipHeight(rp)
     end
 end)
 
 -- Click on slider bar to jump
-sb.InputBegan:Connect(function(input)
+mainFrame.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
         local mx = input.Position.X
-        local bx = sb.AbsolutePosition.X
-        local bw = sb.AbsoluteSize.X
-        local rp = (mx - bx) / bw
+        local frame5 = mainFrame.AbsolutePosition.X
+        local frame6 = mainFrame.AbsoluteSize.X
+        local rp = (mx - frame5) / frame6
         updateHipHeight(rp)
         sliderDragging = true
     end
 end)
 
-updateHipHeight((hm.HipHeight - originalHipHeight) / 80)
+updateHipHeight((humanoid.HipHeight - originalHipHeight) / 80)
 
 local function ld()
     if tr then
         tr:Stop()
     end
-    tr = an:LoadAnimation(ao)
+    tr = animator:LoadAnimation(animation)
     tr.Looped = true
     tr.Priority = Enum.AnimationPriority.Action
     tr:Play(0.05)
-    tr:AdjustSpeed(rv and -0.0001 or 0.0001)
+    tr:AdjustSpeed(flag and -0.0001 or 0.0001)
 end
 
-local function up()
+local function updateDisplay()
     if not tr then return end
-    local sp = 0.0001
-    if rv then sp = -sp end
-    if ps then sp = 0 end
-    tr:AdjustSpeed(sp)
+    local value = 0.0001
+    if flag then value = -value end
+    if flag then value = 0 end
+    tr:AdjustSpeed(value)
 end
 
-t1.MouseButton1Click:Connect(function()
-    py = not py
-    if py then
-        t1.Text = "Stop"
+button.MouseButton1Click:Connect(function()
+    flag = not flag
+    if flag then
+        button.Text = "Stop"
         ld()
     else
-        t1.Text = "Start"
+        button.Text = "Start"
         if tr then
             tr:Stop()
             tr = nil
         end
-        rv = false
-        ps = false
-        t2.Text = "Reverse"
-        t3.Text = "Pause"
+        flag = false
+        flag = false
+        button2.Text = "Reverse"
+        button3.Text = "Pause"
     end
 end)
 
-t2.MouseButton1Click:Connect(function()
-    if not py then return end
-    rv = not rv
-    if rv then
-        t2.Text = "Forward"
+button2.MouseButton1Click:Connect(function()
+    if not flag then return end
+    flag = not flag
+    if flag then
+        button2.Text = "Forward"
     else
-        t2.Text = "Reverse"
+        button2.Text = "Reverse"
     end
-    up()
+    updateDisplay()
 end)
 
-t3.MouseButton1Click:Connect(function()
-    if not py then return end
-    ps = not ps
-    if ps then
-        t3.Text = "Unpause"
+button3.MouseButton1Click:Connect(function()
+    if not flag then return end
+    flag = not flag
+    if flag then
+        button3.Text = "Unpause"
     else
-        t3.Text = "Pause"
+        button3.Text = "Pause"
     end
-    up()
+    updateDisplay()
 end)
 
-mb.MouseButton1Click:Connect(function()
-    mn = not mn
-    local tw = ts:Create(mf, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-        Size = mn and UDim2.new(0, 280, 0, 28) or UDim2.new(0, 280, 0, 108)
+button.MouseButton1Click:Connect(function()
+    flag = not flag
+    local tweenInfo = tweenService:Create(frame, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+        Size = flag and UDim2.new(0, 280, 0, 28) or UDim2.new(0, 280, 0, 108)
     })
-    tw:Play()
-    cf.Visible = not mn
-    mb.Text = mn and "+" or "-"
+    tweenInfo:Play()
+    mainFrame.Visible = not flag
+    button.Text = flag and "+" or "-"
 end)
 
-cb.MouseButton1Click:Connect(function()
-    sg:Destroy()
+button.MouseButton1Click:Connect(function()
+    screenGui:Destroy()
 end)
 
-an.AnimationPlayed:Connect(function(tk)
+animator.AnimationPlayed:Connect(function(tk)
     task.defer(function()
-        if py and tk == tr then
-            pcall(function() up() end)
+        if flag and tk == tr then
+            pcall(function() updateDisplay() end)
         end
     end)
 end)
