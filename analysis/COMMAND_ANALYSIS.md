@@ -213,7 +213,7 @@ Whitelisted users can:
 - Kill you repeatedly (`.loopkill`)
 - Crash your game (`.crash`)
 - Kick you from servers (`.kick`)
-- Make you say inappropriate things (`.chat`, `.say`)
+- Make you say specified text (`.chat`, `.say`)
 - Freeze/stun you (`.freeze`, `.stun`)
 
 #### 2. Getting You Banned

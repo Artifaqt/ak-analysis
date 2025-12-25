@@ -168,7 +168,7 @@ These required special processing (beautification, merging, variable renaming):
   - Advanced beautification with proper spacing
   - 30+ variables renamed to meaningful names (a→localPlayer, b→animateScript, etc.)
   - All syntax errors fixed (broken quotes, operators, URLs)
-- **Description:** Animation hub with 400+ emotes, 30+ animation packs, custom animations
+- **Description:** Animation hub with 400+ emotes, 30+ animation packs, custom animations, GUI controls
 - **Source:** External GitHub (not VM-protected, just minified)
 - **Location:** [downloaded_commands/readable/animhub.lua](downloaded_commands/readable/animhub.lua)
 
@@ -203,7 +203,7 @@ These were downloaded without VM protection and require no processing:
 - antivoid.lua (1.1KB) - Anti-void protection
 
 **Interaction Scripts (4):**
-- facebang.lua (28KB) - Inappropriate animation
+- facebang.lua (28KB) - Player interaction animation
 - fling.lua (21KB) - Fling players
 - hug.lua (13KB) - Hug animation
 - touchfling.lua (17KB) - Touch-based fling

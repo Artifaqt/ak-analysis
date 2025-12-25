@@ -124,7 +124,7 @@ These scripts have been processed and moved to `/downloaded_commands/readable/`:
   - Fixed 6 instances of broken string quotes
   - All parsing errors resolved
 - **Location:** `/downloaded_commands/readable/animhub.lua`
-- **Description:** Animation hub with 400+ emotes, 30+ animation packs, custom animations, GUI controls, trolling features (rape animations, sit variations, float poses)
+- **Description:** Animation hub with 400+ emotes, 30+ animation packs, custom animations, GUI controls, various animation variations including sit poses and float animations
 - **Source:** External GitHub (not from akadmin-bzk.pages.dev)
 - **Protection Level:** None - just minified, no VM obfuscation
 

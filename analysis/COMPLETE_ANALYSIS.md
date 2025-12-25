@@ -163,8 +163,8 @@ These commands download and execute scripts from `https://akadmin-bzk.pages.dev/
 | `!kidnap` | Kidnap player |
 | `!antikidnap` | Anti-kidnap |
 | `!hug` | Hug player |
-| `!facebang` | Inappropriate animation |
-| `!jerk` | Inappropriate animation |
+| `!facebang` | Player interaction animation |
+| `!jerk` | Animation system |
 
 #### Utility Commands
 | Command | Description |
@@ -269,7 +269,7 @@ https://discord.com/api/webhooks/1416824385267957800/1qCdZ7WoxBAOWtYMgpzFnAiwj0w
 1. ⚠️ **External scripts** - Downloads code from akadmin-bzk.pages.dev
 2. ⚠️ **Unknown content** - Scripts could change at any time
 3. ⚠️ **No verification** - No way to verify script safety
-4. ⚠️ **Some inappropriate** - Commands like "facebang", "jerk"
+4. ⚠️ **Unverified animations** - Some commands load unverified animation content
 5. ✅ **You control** - At least YOU choose to run them
 
 **Domain:**
