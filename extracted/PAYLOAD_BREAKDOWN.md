@@ -1,11 +1,21 @@
 # Complete Payload Breakdown - All 24 Files Analyzed
 
+> **Note:** This file analyzes the **24 payload files** loaded by the main AK script.
+> For analysis of the **25 downloaded !command scripts**, see [../analysis/DEOBFUSCATION_STATUS.md](../analysis/DEOBFUSCATION_STATUS.md)
+
 ## 📊 Summary Statistics
 
+### AK Main Payloads (This File):
 - **Total Payloads:** 24 files
 - **Readable Scripts:** 7 files
 - **VM-Obfuscated:** ~15 files
 - **Empty Files:** 2 files
+
+### Downloaded Commands (Separate Analysis):
+- **Total Downloaded:** 25 command scripts
+- **Successfully Processed:** 3 scripts (12%) - See readable/ folder
+- **VM-Protected:** 22 scripts (88%) - See vm_obfuscated/ folder
+- **Full Details:** [DEOBFUSCATION_STATUS.md](../analysis/DEOBFUSCATION_STATUS.md)
 
 ---
 

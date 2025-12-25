@@ -1,5 +1,10 @@
 # AK Admin - Complete Analysis (UPDATED)
 
+> **Latest Update:** This file analyzes the main AK Admin system and 24 payloads.
+> For deobfuscation results of the 25 downloaded !command scripts, see [DEOBFUSCATION_STATUS.md](DEOBFUSCATION_STATUS.md)
+> - **3/25 command scripts successfully processed** (animhub, sfly, jerk)
+> - **22/25 remain VM-protected** (Luraph obfuscation)
+
 ## 🚨 CRITICAL: This Script Has TWO Command Systems!
 
 ### System 1: `.commands` (Remote Control by Others)
@@ -7,6 +12,7 @@
 
 ### System 2: `!commands` (Your Commands)
 **76+ commands** that YOU can use (downloads additional scripts from their server)
+- **Note:** Most downloaded scripts are VM-protected and cannot be deobfuscated
 
 ---
 
@@ -595,7 +601,8 @@ The "AK Admin 75 Command Script" is actually:
 
 ---
 
-**Analysis Date:** 2025-12-24
-**Total Scripts Analyzed:** 24
+**Analysis Date:** 2025-12-25 (Updated)
+**Total Main Payloads Analyzed:** 24
+**Total Downloaded Commands:** 25 (3 readable, 22 VM-protected)
 **Total Commands Found:** 116+
 **Security Rating:** 🔴 UNSAFE - DO NOT USE
