@@ -1,2 +1,5 @@
 /.claude
 *.gitignore
+
+# Oracle API key protection
+tools/oracle_decompile.js
