@@ -126,20 +126,16 @@ These scripts use Luraph VM obfuscation and cannot be deobfuscated:
 
 **Note:** caranims.lua and ugcemotes.lua were MoonSec V3 protected (not Luraph) and have been successfully deobfuscated.
 
-**Why they crash when run standalone:**
-- **Environment Validation (PRIMARY)** - Scripts require AK Admin infrastructure
-  - Check for AK-specific globals (`_G.AK_LOADED`, etc.)
-  - Require services/functions created by the 24 payload files
-  - Validate authentication tokens from main loader
-- **VM Obfuscation** - Luraph custom bytecode that can't be decompiled
-- **Anti-Tamper Detection** - Detect modified environments and debugging
-- **Intentional Crash Design** - Execute `while true do end` when validation fails
-
-**Why they work through AK Admin:**
-- Main AK loader sets up required environment
-- 24 payload files provide necessary infrastructure
-- Authentication state is established
-- All dependencies are loaded
+**Why bypass attempts failed:**
+- **Luraph Anti-Tamper Detection (PRIMARY)** - Detects any modifications to debug.info, pcall, setfenv
+  - All 7 bypass variants triggered anti-tamper protection
+  - Simplified bypass: Immediate crash when anti-tamper detected hooks
+  - Other variants: Stack overflow at 127-182 call depth from internal VM recursion
+- **Deep Internal Recursion** - Luraph VM has 181+ call depth as architectural feature
+  - Can't be prevented by external recursion limits
+  - Even 500 recursion limit still overflows
+- **Custom VM Bytecode** - No standard Lua loadstring() calls to hook
+- **No Intermediate Output** - Goes straight from VM bytecode to execution
 
 **Alternative approaches:**
 - Behavioral analysis (run through AK and observe)
@@ -379,11 +375,11 @@ The AK admin commands use sophisticated multi-layer protection:
 
 ## Key Findings
 
-### 1. Environment Dependency is the Real Blocker
-- **Discovery:** Scripts crash when run standalone but work through AK Admin
-- **Reason:** Scripts validate the AK Admin environment before execution
-- **Impact:** Even if we deobfuscate the source, scripts won't run independently
-- **Conclusion:** Scripts are architecturally dependent on AK infrastructure
+### 1. Luraph Anti-Tamper is Extremely Strong
+- **Discovery:** All bypass attempts triggered Luraph's anti-tamper protection
+- **Reason:** Luraph detects any hooks on debug.info, pcall, setfenv functions
+- **Impact:** Hook-based bypasses fundamentally don't work - causes crashes or stack overflow
+- **Conclusion:** Luraph VM (2024-2025) is highly resistant to dynamic deobfuscation
 
 ### 2. MoonSec V3 Successfully Broken! 🎉
 - **100% success rate** - 4/4 scripts deobfuscated
@@ -553,10 +549,10 @@ During processing, we created several tools:
 
 **Luraph VM bypass: Failed (0/18)**
 - Tested 7 different bypass variants, all failed
+- Anti-tamper detection triggers crashes or stack overflow
 - Stack overflow at 127-182 call depth (internal VM recursion)
 - No loadstring() calls to hook in VM scripts
-- Hook-based approaches fundamentally don't work
-- Environment validation blocks standalone execution
+- Hook-based approaches fundamentally don't work against Luraph
 
 **Already readable: Excellent success (33/58 = 57%)**
 - Most scripts downloaded without VM protection
@@ -575,7 +571,7 @@ During processing, we created several tools:
 - ✅ 33 scripts already readable, 3 manually processed, 4 MoonSec deobfuscated
 - ✅ MoonSec V3 protection completely broken
 - ❌ 18 Luraph VM scripts remain protected (31%)
-- ⚠️ All scripts are architecturally dependent on AK, won't run standalone
+- ❌ Luraph anti-tamper defeats all hook-based bypass attempts
 
 **Recommendation:**
 Accept the current state. We have successfully:
@@ -589,5 +585,5 @@ Accept the current state. We have successfully:
 Further attempts at Luraph VM deobfuscation would require:
 - Weeks/months of VM reverse engineering (not hook-based approaches)
 - Advanced memory dumping techniques
-- Still wouldn't solve environment dependency issue
+- Finding ways to bypass Luraph's anti-tamper detection
 - Diminishing returns on effort invested (only 31% of scripts remain protected)

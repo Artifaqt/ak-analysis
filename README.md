@@ -124,11 +124,11 @@ ak/
    - 40/58 scripts total are now readable (69%)
    - No standard loadstring() calls in Luraph VM scripts - custom VM interpreter
 
-5. **Environment Dependency** 🔴 CRITICAL DISCOVERY
-   - Scripts crash when run standalone
-   - Work perfectly when executed through AK Admin
-   - Require AK-specific globals and infrastructure
-   - Validate environment before execution
+5. **Luraph Anti-Tamper Protection**
+   - 18/58 scripts protected with Luraph VM
+   - Anti-tamper detects and blocks all bypass attempts
+   - Hook-based deobfuscation fundamentally doesn't work
+   - 7 different bypass variants all failed
 
 ### Security Verdict: 🔴 **DO NOT USE**
 
@@ -285,14 +285,13 @@ These were downloaded without VM protection and require no processing:
 These scripts remain in [downloaded_commands/vm_obfuscated/](downloaded_commands/vm_obfuscated/) and cannot be deobfuscated:
 
 **Why Luraph deobfuscation failed:**
-1. **Luraph VM Protection** - Custom bytecode interpreter, not standard Lua
-2. **No loadstring() calls** - Hook-based deobfuscation impossible
-3. **Deep internal recursion** - Stack overflow at 127-182 call depth (tested on flip.lua)
-4. **Anti-tamper detection** - All bypass variants triggered crashes or stack overflow
-5. **Environment validation** - Crashes when AK infrastructure is missing
+1. **Luraph Anti-Tamper Detection** - Detects and blocks all hook attempts on debug.info, pcall, setfenv
+2. **Deep internal recursion** - Luraph VM has 181+ call depth as architectural feature
+3. **Custom VM bytecode** - No standard Lua loadstring() calls to hook
+4. **Hook-based approaches fundamentally don't work**
 
-**All bypass attempts failed:**
-- Simplified bypass: Anti-tamper crash
+**All 7 bypass variants tested on flip.lua:**
+- Simplified: Anti-tamper crash (detected hooks immediately)
 - No increment: Stack overflow at 166
 - Recursion limit (50): Stack overflow at 181
 - High limit (500): Stack overflow at 182
@@ -527,18 +526,18 @@ The AK admin commands use sophisticated multi-layer protection:
 - VM interpreter at runtime
 - No standard Lua loadstring() calls
 
-### Layer 3: Environment Validation
-- Scripts validate AK Admin environment
-- Check for specific globals set by main loader
-- Require infrastructure from 24 payload files
-- Crash when validation fails (`while true do end`)
-- **This is why they work in AK but crash standalone** 🔴
+### Layer 3: Anti-Tamper Detection (Luraph)
+- **Extremely effective** - Defeated all 7 bypass variants
+- Detects hooked functions (debug.info, pcall, setfenv)
+- Triggers immediate crash or causes stack overflow
+- Makes hook-based deobfuscation impossible
+- **This is why Luraph scripts remain protected** 🔴
 
-### Layer 4: Anti-Tamper Detection
-- Detect hooked functions
-- Check for debuggers
-- Verify VM bytecode integrity
-- Detect exploit-specific globals
+### Layer 4: Deep VM Recursion
+- Luraph VM uses 181+ call depth internally
+- Can't be prevented by external recursion limits
+- Even 500 recursion limit still overflows
+- Architectural feature, not just anti-tamper
 
 ### Layer 5: Alternative Obfuscation (MoonSec V3)
 - Used by 4 scripts (caranims, ugcemotes, jerk_r6, jerk_r15)
@@ -575,11 +574,11 @@ The AK admin commands use sophisticated multi-layer protection:
    - Luraph VM has deep internal recursion (181+ call depth) preventing hook-based bypass
    - Good news: 69% of scripts (40/58) are now readable!
 
-2. **Environment Dependency** 🔴 CRITICAL DISCOVERY
-   - Scripts require AK Admin infrastructure to run
-   - Validate environment before execution
-   - Crash when run standalone (even if deobfuscated)
-   - This is architectural design, not just anti-tamper
+2. **Luraph Anti-Tamper is Extremely Strong** 🔴 CRITICAL DISCOVERY
+   - All 7 bypass variants defeated by anti-tamper detection
+   - Detects any hooks on debug.info, pcall, setfenv
+   - Triggers crashes or stack overflow when tampered with
+   - Hook-based approaches fundamentally don't work
 
 3. **Multi-Layer Architecture**
    - Loader (ak.lua) → Key System → 24 Payloads
@@ -609,15 +608,17 @@ The AK admin commands use sophisticated multi-layer protection:
 
 2. **Luraph VM Deobfuscation Failed Completely**
    - Tested 7 different bypass variants on flip.lua
-   - All resulted in stack overflow (127-182 call depth) or crashes
-   - Hook-based approaches don't work (0/18 success)
-   - Luraph VM has internal recursion as part of normal execution
+   - Luraph anti-tamper detected and blocked all attempts
+   - Simplified bypass: Immediate crash from anti-tamper
+   - Other 6 variants: Stack overflow at 127-182 call depth
+   - Hook-based approaches fundamentally don't work (0/18 success)
+   - Luraph VM has deep internal recursion (181+ call depth)
    - No intermediate deobfuscated code to capture
 
-3. **Environment Dependency Blocks Standalone Execution**
-   - Even if we deobfuscate source code, scripts won't run
-   - Require AK-specific globals and infrastructure
-   - Would need to recreate entire AK environment
+3. **MoonSec V3 vs Luraph: Different Outcomes**
+   - MoonSec V3: 100% success with right tools (MoonsecDeobfuscator + Oracle)
+   - Luraph: 0% success despite 7 different bypass attempts
+   - Luraph's anti-tamper is significantly stronger than MoonSec V3
 
 ### Security Lessons:
 
